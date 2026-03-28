@@ -4,16 +4,462 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ayushi Pareek — Senior Product Designer</title>
-  <meta name="description" content="Senior product designer for developer tools. Five years designing technically complex products that feel obvious to the engineers using them.">
-  <meta property="og:title" content="Ayushi Pareek — Senior Product Designer">
-  <meta property="og:description" content="Senior product designer for developer tools.">
-  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="Senior product designer for developer tools.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0d0d0d;
+      --surface:  #161616;
+      --border:   #2a2a2a;
+      --white:    #ffffff;
+      --grey1:    #a0a0a0;
+      --grey2:    #5a5a5a;
+      --max:      780px;
+    }
+
+    html { -webkit-font-smoothing: antialiased; font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; height: auto; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2.5rem;
+      transition: background 0.3s, border-color 0.3s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(13,13,13,0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom-color: var(--border);
+    }
+
+    .nav-name {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: var(--grey1);
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--white); }
+
+    /* ── WRAP ── */
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    /* ── FADE-IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-in.d1 { transition-delay: 0.05s; }
+    .fade-in.d2 { transition-delay: 0.12s; }
+    .fade-in.d3 { transition-delay: 0.2s; }
+    .fade-in.d4 { transition-delay: 0.28s; }
+
+    /* ── HERO ── */
+    .hero {
+      padding-top: 10rem;
+      padding-bottom: 5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.25rem, 9vw, 6.5rem);
+      font-weight: 800;
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      margin-bottom: 2.25rem;
+    }
+
+    .hero-name { display: block; }
+    .hero-title {
+      display: block;
+      color: var(--grey1);
+      font-weight: 700;
+    }
+
+    .hero-bio {
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      color: var(--grey1);
+      font-weight: 300;
+      max-width: 520px;
+    }
+
+    .hero-bio a {
+      color: var(--white);
+      font-weight: 500;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.15s;
+    }
+    .hero-bio a:hover { border-color: var(--white); }
+
+    /* ── SECTION ── */
+    .section {
+      padding-top: 5rem;
+      padding-bottom: 1rem;
+    }
+
+    .section-heading {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 2rem;
+    }
+
+    /* ── WORK CARDS ── */
+    .work-list {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    .work-card {
+      display: block;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .work-card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--surface);
+      overflow: hidden;
+      border-radius: 4px;
+      margin-bottom: 1.1rem;
+      position: relative;
+    }
+    .work-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+    .work-card:hover .work-card-img img { transform: scale(1.03); }
+
+    /* placeholder gradient when no image */
+    .work-card-img.p1 { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); }
+    .work-card-img.p2 { background: linear-gradient(135deg, #1a2e1a 0%, #16312a 100%); }
+    .work-card-img.p3 { background: linear-gradient(135deg, #2e1a1a 0%, #311629 100%); }
+
+    .work-card-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.3rem;
+    }
+
+    .work-card-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .work-card-arrow {
+      font-size: 1.1rem;
+      color: var(--grey2);
+      transition: transform 0.2s ease, color 0.15s;
+    }
+    .work-card:hover .work-card-arrow {
+      transform: translate(4px, -4px);
+      color: var(--white);
+    }
+
+    .work-card-desc {
+      font-size: 0.9375rem;
+      color: var(--grey1);
+      font-weight: 300;
+    }
+
+    /* ── ABOUT ── */
+    .about-body {
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      color: var(--grey1);
+      font-weight: 300;
+    }
+    .about-body p + p { margin-top: 1.1rem; }
+    .about-body a {
+      color: var(--white);
+      font-weight: 500;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.15s;
+    }
+    .about-body a:hover { border-color: var(--white); }
+
+    /* ── EXPERIENCE ── */
+    .exp-list {
+      list-style: none;
+      margin-top: 3rem;
+    }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 1rem;
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .exp-item:last-child { border-bottom: 1px solid var(--border); }
+
+    .exp-company {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.2rem;
+    }
+    .exp-role {
+      font-size: 0.875rem;
+      color: var(--grey1);
+      font-weight: 300;
+    }
+    .exp-dates {
+      font-size: 0.8125rem;
+      color: var(--grey2);
+      white-space: nowrap;
+      padding-top: 0.2rem;
+    }
+
+    .cv-link {
+      display: inline-block;
+      margin-top: 2rem;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.15rem;
+      transition: border-color 0.15s;
+    }
+    .cv-link:hover { border-color: var(--white); }
+
+    /* ── SKILLS ── */
+    .skills-wrap { margin-top: 3.5rem; }
+
+    .skills-display {
+      font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+      font-weight: 800;
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+      color: var(--white);
+    }
+    .skills-display .dot { color: var(--grey2); margin: 0 0.2em; font-weight: 400; }
+
+    /* ── INTERESTS MARQUEE ── */
+    .marquee-section { margin-top: 3.5rem; overflow: hidden; }
+
+    .marquee-label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey2);
+      margin-bottom: 1rem;
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .marquee-img {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-right: 12px;
+      flex-shrink: 0;
+      background: var(--surface);
+    }
+
+    /* ── CONTACT ── */
+    .contact-heading {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .contact-body {
+      font-size: 1rem;
+      color: var(--grey1);
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 460px;
+      margin-bottom: 2rem;
+    }
+
+    .contact-email {
+      display: inline-block;
+      font-size: 1.125rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      border-bottom: 1.5px solid var(--white);
+      padding-bottom: 0.1rem;
+      margin-bottom: 2.5rem;
+      transition: opacity 0.15s;
+    }
+    .contact-email:hover { opacity: 0.6; }
+
+    .social-row {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .social-row a {
+      font-size: 0.9375rem;
+      color: var(--grey1);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.1rem;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .social-row a:hover {
+      color: var(--white);
+      border-color: var(--white);
+    }
+
+    /* ── EMAIL STRIP ── */
+    .email-strip {
+      margin-top: 5rem;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .email-strip-text h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+    .email-strip-text p {
+      font-size: 0.875rem;
+      color: var(--grey1);
+      font-weight: 300;
+    }
+
+    .email-form {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .email-input {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      padding: 0.6rem 1rem;
+      border-radius: 3px;
+      outline: none;
+      width: 220px;
+      transition: border-color 0.15s;
+    }
+    .email-input::placeholder { color: var(--grey2); }
+    .email-input:focus { border-color: var(--grey1); }
+
+    .email-btn {
+      background: var(--white);
+      color: var(--bg);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.6rem 1.25rem;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .email-btn:hover { opacity: 0.8; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    footer span, footer a {
+      font-size: 0.8125rem;
+      color: var(--grey2);
+    }
+    footer a:hover { color: var(--grey1); }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 2.5rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      nav { padding: 1.1rem 1.5rem; }
+      .wrap { padding: 0 1.5rem; }
+      .hero { padding-top: 7.5rem; }
+      .nav-links { gap: 1.25rem; }
+      footer { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
+      .email-strip { padding: 2rem 1.5rem; }
+      .email-input { width: 100%; }
+    }
+  </style>
 </head>
 <body>
 
   <!-- NAV -->
   <nav id="nav">
-    <a href="/" class="nav-name">Ayushi Pareek</a>
+    <a href="index.html" class="nav-name">Ayushi Pareek</a>
     <ul class="nav-links">
       <li><a href="#work">Work</a></li>
       <li><a href="#about">About</a></li>
@@ -22,100 +468,98 @@
   </nav>
 
   <!-- HERO -->
-  <div class="page">
-    <section class="hero">
-      <p class="hero-eyebrow">Senior product designer for developer tools</p>
-      <h1>I design for developers.<br><em>And I think like one.</em></h1>
-      <p class="hero-desc">I'm Ayushi, and I've spent five years designing technically complex products that feel obvious to the engineers using them.</p>
-    </section>
+  <div class="wrap">
+    <div class="hero">
+      <h1 class="fade-in">
+        <span class="hero-name">Ayushi Pareek</span>
+        <span class="hero-title">Senior product designer<br>for developer tools</span>
+      </h1>
+      <p class="hero-bio fade-in d2">
+        I've spent five years designing technically complex products that feel obvious to the engineers using them. Most recently at <a href="#">Parseable</a>. Previously at <a href="#">Appsmith</a> and <a href="#">DeepSource</a>.
+      </p>
+    </div>
   </div>
+
+  <div class="divider"></div>
 
   <!-- WORK -->
-  <div class="page" id="work">
-    <section>
-      <p class="section-label">Work</p>
-      <div class="work-grid">
+  <div class="wrap" id="work">
+    <div class="section">
+      <h2 class="section-heading fade-in">Work</h2>
+      <div class="work-list">
 
-        <a href="work/parseable.html" class="work-card">
-          <div class="work-card-image">
-            <!-- Replace with actual project image -->
-            <div class="work-card-image-placeholder" style="background: #f0ede8;"></div>
+        <a href="work/parseable.html" class="work-card fade-in d1">
+          <div class="work-card-img p1">
+            <!-- replace with: <img src="assets/parseable.jpg" alt="Parseable"> -->
           </div>
-          <div class="work-card-body">
-            <div class="work-card-info">
-              <div class="work-card-name">Parseable</div>
-              <div class="work-card-desc">Log analytics and observability platform</div>
-            </div>
-            <span class="work-card-arrow">→</span>
+          <div class="work-card-row">
+            <span class="work-card-name">Parseable</span>
+            <span class="work-card-arrow">↗</span>
           </div>
+          <p class="work-card-desc">Log analytics and observability platform</p>
         </a>
 
-        <a href="work/deepsource.html" class="work-card">
-          <div class="work-card-image">
-            <div class="work-card-image-placeholder" style="background: #eaeef2;"></div>
+        <a href="work/deepsource.html" class="work-card fade-in d2">
+          <div class="work-card-img p2">
+            <!-- replace with: <img src="assets/deepsource.jpg" alt="DeepSource"> -->
           </div>
-          <div class="work-card-body">
-            <div class="work-card-info">
-              <div class="work-card-name">DeepSource</div>
-              <div class="work-card-desc">Static analysis and code quality tooling</div>
-            </div>
-            <span class="work-card-arrow">→</span>
+          <div class="work-card-row">
+            <span class="work-card-name">DeepSource</span>
+            <span class="work-card-arrow">↗</span>
           </div>
+          <p class="work-card-desc">Static analysis and code quality tooling</p>
         </a>
 
-        <a href="work/appsmith.html" class="work-card">
-          <div class="work-card-image">
-            <div class="work-card-image-placeholder" style="background: #ece8f0;"></div>
+        <a href="work/appsmith.html" class="work-card fade-in d3">
+          <div class="work-card-img p3">
+            <!-- replace with: <img src="assets/appsmith.jpg" alt="Appsmith"> -->
           </div>
-          <div class="work-card-body">
-            <div class="work-card-info">
-              <div class="work-card-name">Appsmith</div>
-              <div class="work-card-desc">Low-code platform for internal tools</div>
-            </div>
-            <span class="work-card-arrow">→</span>
+          <div class="work-card-row">
+            <span class="work-card-name">Appsmith</span>
+            <span class="work-card-arrow">↗</span>
           </div>
+          <p class="work-card-desc">Low-code platform for internal tools</p>
         </a>
 
       </div>
-    </section>
+    </div>
   </div>
 
+  <div class="divider" style="margin-top: 4rem;"></div>
+
   <!-- ABOUT -->
-  <div class="page" id="about">
-    <section>
-      <p class="section-label">About</p>
-      <div class="about-text">
-        <p>I'm a senior product designer based in Bengaluru, with five years working on developer tools: observability platforms, static analysis, and low-code infrastructure. I learn how a product actually works before I touch a screen. That shows up in the work.</p>
+  <div class="wrap" id="about">
+    <div class="section">
+      <h2 class="section-heading fade-in">About</h2>
+      <div class="about-body fade-in d1">
+        <p>I'm a senior product designer based in Bengaluru. Five years, one focus: developer tools. I've worked across observability, static code analysis, and low-code platforms. I learn how a product actually works before I touch a screen. That shows up in the work.</p>
         <p>I've built design systems from scratch, designed for novel problem spaces like AI agent observability, and shipped with small engineering-led teams where everyone has opinions and speed matters. I move well in that environment.</p>
-        <p>Outside of design, I make things with paper and cardboard. Notebooks, miniatures, furniture. Turns out building physical systems from scratch and building design systems aren't that different.</p>
+        <p>Outside of design, I make things with paper and cardboard. Notebooks, miniatures, furniture. Turns out, building physical systems from scratch and building design systems aren't that different.</p>
       </div>
 
-      <br>
-
-      <p class="section-label" style="margin-top: 2.5rem;">Experience</p>
-      <ul class="experience-list">
-        <li class="experience-item">
+      <ul class="exp-list">
+        <li class="exp-item fade-in d1">
           <div>
             <div class="exp-company">Parseable</div>
             <div class="exp-role">Product Designer</div>
           </div>
           <span class="exp-dates">2025 – 2026</span>
         </li>
-        <li class="experience-item">
+        <li class="exp-item fade-in d2">
           <div>
             <div class="exp-company">Appsmith</div>
             <div class="exp-role">Product Designer</div>
           </div>
           <span class="exp-dates">2022 – 2023</span>
         </li>
-        <li class="experience-item">
+        <li class="exp-item fade-in d3">
           <div>
             <div class="exp-company">DeepSource</div>
             <div class="exp-role">Product Designer</div>
           </div>
           <span class="exp-dates">2019 – 2021</span>
         </li>
-        <li class="experience-item">
+        <li class="exp-item fade-in d4">
           <div>
             <div class="exp-company">Freelance</div>
             <div class="exp-role">UI/UX Designer</div>
@@ -124,56 +568,98 @@
         </li>
       </ul>
 
-      <br>
+      <a href="resume_ayushi_pareek_ATS.docx" class="cv-link fade-in">See full CV →</a>
 
-      <p class="section-label" style="margin-top: 2.5rem;">Skills</p>
-      <div class="skills-list">
-        <span class="skill-tag">Product design</span>
-        <span class="skill-tag">Design systems</span>
-        <span class="skill-tag">User research</span>
-        <span class="skill-tag">Information architecture</span>
-        <span class="skill-tag">Data visualization</span>
-        <span class="skill-tag">Interaction design</span>
-        <span class="skill-tag">Developer tools &amp; DX</span>
-        <span class="skill-tag">Observability UX</span>
-        <span class="skill-tag">Figma</span>
-        <span class="skill-tag">HTML &amp; CSS</span>
+      <!-- SKILLS -->
+      <div class="skills-wrap fade-in">
+        <div class="skills-display">
+          Product design<span class="dot">·</span>Design systems<span class="dot">·</span>User research<span class="dot">·</span>Information architecture<span class="dot">·</span>Data visualization<span class="dot">·</span>Interaction design<span class="dot">·</span>Developer tools &amp; DX<span class="dot">·</span>Figma
+        </div>
       </div>
 
-      <p style="margin-top: 1.75rem;">
-        <a href="resume_ayushi_pareek_ATS.docx" style="font-size: 0.875rem; border-bottom: 1px solid #e8e8e8; padding-bottom: 0.1rem; color: #555; transition: color 0.15s;">
-          Download CV →
-        </a>
-      </p>
-    </section>
+      <!-- INTERESTS MARQUEE -->
+      <div class="marquee-section fade-in">
+        <p class="marquee-label">Interests</p>
+        <div class="marquee-track" id="marquee">
+          <!-- Add your own photos here. These are placeholders matching Sharp's style -->
+          <div class="marquee-img" style="background:#1e1e1e;"></div>
+          <div class="marquee-img" style="background:#222;"></div>
+          <div class="marquee-img" style="background:#1a1a1a;"></div>
+          <div class="marquee-img" style="background:#202020;"></div>
+          <div class="marquee-img" style="background:#1c1c1c;"></div>
+          <div class="marquee-img" style="background:#242424;"></div>
+          <!-- duplicates for seamless loop -->
+          <div class="marquee-img" style="background:#1e1e1e;"></div>
+          <div class="marquee-img" style="background:#222;"></div>
+          <div class="marquee-img" style="background:#1a1a1a;"></div>
+          <div class="marquee-img" style="background:#202020;"></div>
+          <div class="marquee-img" style="background:#1c1c1c;"></div>
+          <div class="marquee-img" style="background:#242424;"></div>
+        </div>
+      </div>
+
+    </div>
   </div>
 
+  <div class="divider" style="margin-top: 4rem;"></div>
+
   <!-- CONTACT -->
-  <div class="page" id="contact">
-    <section>
-      <p class="section-label">Contact</p>
-      <h2 class="contact-heading">Let's work together.</h2>
-      <p class="contact-body">I'm currently open to full-time remote product design roles at developer tools companies. If something you're building sounds like a fit, I'd love to hear about it.</p>
-      <a href="mailto:ayushipareek@gmail.com" class="contact-email">ayushipareek@gmail.com</a>
-      <br>
-      <ul class="social-links">
+  <div class="wrap" id="contact">
+    <div class="section">
+      <h2 class="contact-heading fade-in">Have a role in mind?</h2>
+      <p class="contact-body fade-in d1">Looking for full-time remote product design roles at developer tools companies. If something you're building sounds like a fit, I'd love to hear about it.</p>
+      <a href="mailto:ayushipareek@gmail.com" class="contact-email fade-in d2">ayushipareek@gmail.com</a>
+      <br><br>
+      <ul class="social-row fade-in d3">
         <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
         <li><a href="#" target="_blank" rel="noopener">Dribbble</a></li>
       </ul>
-    </section>
+    </div>
+  </div>
+
+  <!-- EMAIL STRIP -->
+  <div class="email-strip fade-in">
+    <div class="email-strip-text">
+      <h3>Stay in the loop</h3>
+      <p>Design thoughts and process notes. No spam.</p>
+    </div>
+    <div class="email-form">
+      <input class="email-input" type="email" placeholder="your@email.com">
+      <button class="email-btn">Subscribe</button>
+    </div>
   </div>
 
   <!-- FOOTER -->
   <footer>
-    <span class="footer-name">Ayushi Pareek</span>
-    <span class="footer-right">Bengaluru, India</span>
+    <span>Ayushi Pareek — Bengaluru, India</span>
+    <span>©2025</span>
   </footer>
 
   <script>
-    // Add scrolled class to nav
+    // Scrolled nav
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    // Fire immediately for above-fold elements, observe rest
+    document.querySelectorAll('.fade-in').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        el.classList.add('visible');
+      } else {
+        observer.observe(el);
+      }
     });
   </script>
 
