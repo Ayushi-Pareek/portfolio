@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Appsmith — Ayushi Pareek</title>
+  <title>Appsmith · Ayushi Pareek</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -11,74 +11,82 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --bg:#0d0d0d; --surface:#161616; --border:#2a2a2a; --white:#ffffff; --grey1:#a0a0a0; --grey2:#5a5a5a; --max:780px; }
     html { -webkit-font-smoothing: antialiased; font-size: 16px; }
-    body { background: var(--bg); color: var(--white); font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; }
+    body { background: var(--bg); color: var(--white); font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; }
     a { color: inherit; text-decoration: none; }
-    img { display: block; width: 100%; height: auto; }
+    img { display: block; width: 100%; }
 
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2.5rem; transition: background 0.3s, border-color 0.3s; border-bottom: 1px solid transparent; }
-    nav.scrolled { background: rgba(13,13,13,0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom-color: var(--border); }
+    nav.scrolled { background: rgba(13,13,13,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom-color: var(--border); }
     .nav-name { font-size: 0.9375rem; font-weight: 600; letter-spacing: -0.02em; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { font-size: 0.875rem; color: var(--grey1); transition: color 0.15s; }
     .nav-links a:hover { color: var(--white); }
 
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+    .fade-in.d1 { transition-delay: 0.07s; }
+    .fade-in.d2 { transition-delay: 0.14s; }
+    .fade-in.d3 { transition-delay: 0.21s; }
+
     .wrap { max-width: var(--max); margin: 0 auto; padding: 0 2.5rem; }
-    .divider { height: 1px; background: var(--border); margin: 0 2.5rem; }
 
-    .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-    .fade-in.d1 { transition-delay: 0.08s; }
-    .fade-in.d2 { transition-delay: 0.16s; }
-    .fade-in.d3 { transition-delay: 0.24s; }
+    .breadcrumb { padding-top: 8rem; display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--grey2); margin-bottom: 1.5rem; }
+    .breadcrumb a { color: var(--grey2); transition: color 0.15s; }
+    .breadcrumb a:hover { color: var(--white); }
 
-    /* CASE HERO */
-    .case-hero { padding-top: 9rem; padding-bottom: 3.5rem; }
+    .page-title { font-size: clamp(3rem, 9vw, 6rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 3.5rem; }
 
-    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.875rem; color: var(--grey1); margin-bottom: 2.5rem; transition: color 0.15s; }
-    .back-link:hover { color: var(--white); }
+    .overview-grid { display: grid; grid-template-columns: 1fr 200px; gap: 4rem; padding-bottom: 3.5rem; border-bottom: 1px solid var(--border); margin-bottom: 3.5rem; }
+    .overview-body h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+    .overview-body p { font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 1rem; }
+    .overview-body p:last-of-type { margin-bottom: 1.5rem; }
+    .see-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.9375rem; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 0.15rem; transition: border-color 0.15s; }
+    .see-link:hover { border-color: var(--white); }
 
-    .case-eyebrow { font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 1rem; }
+    .sidebar-block { margin-bottom: 2rem; }
+    .sidebar-block:last-child { margin-bottom: 0; }
+    .sidebar-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem; }
+    .sidebar-items { font-size: 0.9375rem; color: var(--grey1); font-weight: 300; line-height: 1.85; }
 
-    .case-title { font-size: clamp(2rem, 5.5vw, 3.5rem); font-weight: 800; line-height: 1.0; letter-spacing: -0.04em; margin-bottom: 2.5rem; max-width: 600px; }
+    /* Full-bleed images — break out of wrap */
+    .full-img { width: 100%; background: var(--surface); }
+    .full-img.r169 { aspect-ratio: 16/9; }
+    .full-img.r43  { aspect-ratio: 4/3; }
+    .full-img img  { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    .case-meta { display: flex; gap: 2.5rem; flex-wrap: wrap; padding-bottom: 2.5rem; border-bottom: 1px solid var(--border); }
-    .meta-label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); display: block; margin-bottom: 0.25rem; }
-    .meta-value { font-size: 0.9375rem; font-weight: 500; }
-
-    /* COVER */
-    .case-cover { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #2e1a1a 0%, #2e1a16 100%); margin-bottom: 0; }
-    .case-cover img { width: 100%; height: 100%; object-fit: cover; }
-
-    /* BODY */
-    .case-body { padding-top: 4rem; padding-bottom: 5rem; }
-
-    .case-section { margin-bottom: 4rem; }
-    .case-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.75rem; }
-    .case-section h2 { font-size: clamp(1.375rem, 2.5vw, 1.875rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 1rem; }
+    .case-section { margin-bottom: 3.5rem; }
+    .case-section h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
+    .case-section h3 { font-size: 1.0625rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 0.75rem; margin-top: 2rem; }
+    .case-section h3:first-child { margin-top: 0; }
     .case-section p { font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 1rem; }
     .case-section p:last-child { margin-bottom: 0; }
 
-    figure { margin: 3rem 0; }
-    .fig-img { background: var(--surface); aspect-ratio: 16/9; width: 100%; border-radius: 4px; overflow: hidden; }
-    .fig-img.tall { aspect-ratio: 4/3; }
-    .fig-img img { width: 100%; height: 100%; object-fit: cover; }
-    figcaption { font-size: 0.8125rem; color: var(--grey2); margin-top: 0.65rem; font-weight: 300; }
+    .spacer { height: 3.5rem; }
+    .spacer-sm { height: 2rem; }
 
-    /* NAV BETWEEN CASES */
-    .case-nav { border-top: 1px solid var(--border); padding: 2.5rem 0 0; display: flex; justify-content: space-between; align-items: center; }
-    .case-nav-back { font-size: 0.875rem; color: var(--grey1); transition: color 0.15s; }
-    .case-nav-back:hover { color: var(--white); }
-    .case-nav-next { font-size: 1.125rem; font-weight: 700; letter-spacing: -0.02em; transition: opacity 0.15s; }
-    .case-nav-next:hover { opacity: 0.6; }
+    .next-project { border-top: 1px solid var(--border); padding: 3.5rem 0 4rem; }
+    .next-label { font-size: 0.875rem; color: var(--grey2); margin-bottom: 0.6rem; }
+    .next-link { display: inline-flex; align-items: baseline; gap: 0.75rem; transition: opacity 0.15s; }
+    .next-link:hover { opacity: 0.7; }
+    .next-title { font-size: clamp(1.75rem, 5vw, 3.25rem); font-weight: 800; letter-spacing: -0.04em; }
+    .next-arrow { font-size: clamp(1.75rem, 5vw, 3.25rem); font-weight: 300; color: var(--grey2); }
 
-    footer { padding: 2rem 2.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+    .footer-strip { background: var(--surface); border-top: 1px solid var(--border); padding: 3rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-bio { font-size: 1rem; color: var(--grey1); font-weight: 300; }
+    .footer-bio strong { color: var(--white); font-weight: 600; }
+    .email-cta { font-size: 0.9375rem; font-weight: 600; border-bottom: 1.5px solid var(--white); padding-bottom: 0.1rem; white-space: nowrap; transition: opacity 0.15s; }
+    .email-cta:hover { opacity: 0.6; }
+
+    footer { padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
     footer span { font-size: 0.8125rem; color: var(--grey2); }
 
-    @media (max-width: 600px) {
+    @media (max-width: 680px) {
       nav { padding: 1.1rem 1.5rem; }
       .wrap { padding: 0 1.5rem; }
       .nav-links { gap: 1.25rem; }
-      footer { padding: 1.5rem; flex-direction: column; }
+      .overview-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-strip { padding: 2rem 1.5rem; }
+      footer { padding: 1.25rem 1.5rem; flex-direction: column; }
     }
   </style>
 </head>
@@ -94,82 +102,128 @@
   </nav>
 
   <div class="wrap">
-    <div class="case-hero">
-      <a href="../index.html" class="back-link fade-in">← Back</a>
-      <p class="case-eyebrow fade-in d1">Appsmith · 2022–2023</p>
-      <h1 class="case-title fade-in d2">Reducing friction for developers building internal tools</h1>
-      <div class="case-meta fade-in d3">
-        <div><span class="meta-label">Role</span><span class="meta-value">Product Designer</span></div>
-        <div><span class="meta-label">Scope</span><span class="meta-value">Front-end developer experience</span></div>
-        <div><span class="meta-label">Team</span><span class="meta-value">Engineering, founders</span></div>
+    <div class="breadcrumb fade-in">
+      <a href="../index.html">Home</a>
+      <span>→</span>
+      <a href="../index.html#work">Work</a>
+      <span>→</span>
+      <span>Appsmith</span>
+    </div>
+
+    <h1 class="page-title fade-in d1">Appsmith</h1>
+
+    <div class="overview-grid fade-in d2">
+      <div class="overview-body">
+        <h2>Overview</h2>
+        <p>Replace this with your overview. What is Parseable, what did you own, and what made this worth a full case study? Keep it to 2–3 paragraphs that set up the rest without giving everything away.</p>
+        <p>This is also a good place to link to the live product if it's accessible.</p>
+        <a href="#" class="see-link">See product →</a>
+      </div>
+      <div>
+        <div class="sidebar-block">
+          <p class="sidebar-label">My contribution</p>
+          <div class="sidebar-items">
+            Front-end developer experience<br>
+            Information architecture<br>
+            Design system<br>
+            JavaScript &amp; error handling UX
+          </div>
+        </div>
+        <div class="sidebar-block">
+          <p class="sidebar-label">The team</p>
+          <div class="sidebar-items">
+            1 × product designer<br>
+            4 × engineers<br>
+            2 × founders
+          </div>
+        </div>
+        <div class="sidebar-block">
+          <p class="sidebar-label">Year</p>
+          <div class="sidebar-items">2022 – 2023</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="case-cover">
-    <!-- <img src="../assets/appsmith-cover.jpg" alt="Parseable"> -->
+  <!-- FULL-BLEED COVER -->
+  <div class="full-img r169 fade-in" style="background: linear-gradient(135deg,#2e1a2e,#1e1630);">
+    <!-- <img src="../assets/appsmith-cover.jpg" alt="Parseable overview"> -->
   </div>
+
+  <div class="spacer"></div>
 
   <div class="wrap">
-    <div class="case-body">
+    <div class="case-section fade-in">
+      <h2>Process</h2>
+      <h3>Understanding the system before touching the interface</h3>
+      <p>Replace with your actual process. What did you learn first about how observability platforms work? What did engineers tell you about how they actually debug production issues? Show that you went deep on the domain before designing anything.</p>
 
-      <div class="case-section fade-in">
-        <p class="case-label">Overview</p>
-        <h2>A log analytics platform built for engineers who can't afford guesswork</h2>
-        <p>Add your overview here. What is Parseable, what did you own, and what is the one-sentence version of why this case study matters?</p>
-      </div>
-
-      <figure class="fade-in">
-        <div class="fig-img"></div>
-        <figcaption>Add a caption describing what this image shows.</figcaption>
-      </figure>
-
-      <div class="case-section fade-in">
-        <p class="case-label">Problem</p>
-        <h2>The most powerful parts of the platform were the hardest to use</h2>
-        <p>Replace with your actual problem framing. What was hard? What were engineers actually trying to do? What didn't exist before? Be specific about the failure mode.</p>
-      </div>
-
-      <figure class="fade-in">
-        <div class="fig-img tall"></div>
-        <figcaption>Add a caption.</figcaption>
-      </figure>
-
-      <div class="case-section fade-in">
-        <p class="case-label">Process</p>
-        <h2>Understanding the model before touching the interface</h2>
-        <p>Replace with your actual process. What did you learn first? What decisions did you make and why? Show that you think before you design.</p>
-        <p>Include the systems thinking here: how you approached information architecture, how the interaction model emerged, how the design system grew from the product's complexity.</p>
-      </div>
-
-      <figure class="fade-in">
-        <div class="fig-img"></div>
-        <figcaption>Add a caption.</figcaption>
-      </figure>
-
-      <div class="case-section fade-in">
-        <p class="case-label">JavaScript and Error Handling</p>
-        <h2>Designing for a problem space that didn't exist yet</h2>
-        <p>This section earns its own heading. Replace with your actual story: how you defined the problem, what mental model you built for how teams think about agent behavior, and what the interface lets engineers actually do.</p>
-      </div>
-
-      <figure class="fade-in">
-        <div class="fig-img"></div>
-        <figcaption>Add a caption.</figcaption>
-      </figure>
-
-      <div class="case-section fade-in">
-        <p class="case-label">Outcome</p>
-        <h2>What shipped and what changed</h2>
-        <p>Replace with outcomes. What did you ship? What changed for users? Metrics if you have them, qualitative shift if you don't.</p>
-      </div>
-
-      <div class="case-nav fade-in">
-        <a href="deepsource.html" class="case-nav-back">← DeepSource</a>
-        <a href="../index.html" class="case-nav-next">All work →</a>
-      </div>
-
+      <h3>Designing for telemetry data at scale</h3>
+      <p>Replace with how you approached the core querying and investigation experience. What made it hard? What decisions did you make about information architecture, data visualization density, and how filters and queries should behave?</p>
+      <p>Be specific about the tradeoffs. A candidate who can name the tension between information density and visual clarity is more credible than one who just shows polished mocks.</p>
     </div>
+  </div>
+
+  <div class="full-img r169 fade-in" style="background:#1a1020;">
+    <!-- <img src="../assets/appsmith-dx.jpg" alt="Query interface"> -->
+  </div>
+  <div class="spacer-sm"></div>
+  <div class="full-img r43 fade-in" style="background:#180f1a;">
+    <!-- <img src="../assets/appsmith-js.jpg" alt="Log view"> -->
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="wrap">
+    <div class="case-section fade-in">
+      <h3>Collaborating with the engineering team</h3>
+      <p>Replace with how you worked with engineers day to day. What did implementation decisions look like? Where did you push back, and where did constraints shape better solutions? This is where you show you are not a handoff designer.</p>
+    </div>
+  </div>
+
+  <div class="full-img r169 fade-in" style="background:#1a1020;">
+    <!-- <img src="../assets/appsmith-errors.jpg" alt="Design system components"> -->
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="wrap">
+    <div class="case-section fade-in">
+      <h2>JavaScript and error handling</h2>
+      <h3>A problem space that didn't exist yet</h3>
+      <p>Replace with your actual story. How did you define what "observability" even means for an AI agent? What mental model did you build for how teams think about agent behavior vs. traditional system behavior?</p>
+
+      <h3>What the interface needed to do</h3>
+      <p>Replace with what you designed and why. What does an engineer actually need to see when an LLM pipeline does something unexpected? How did you make that visible without overwhelming them with raw trace data?</p>
+    </div>
+  </div>
+
+  <div class="full-img r169 fade-in" style="background:#15101a;">
+    <!-- <img src="../assets/appsmith-flow.jpg" alt="AI agent observability"> -->
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="wrap">
+    <div class="case-section fade-in">
+      <h2>Outcome</h2>
+      <p>Replace with your outcomes. What shipped? What changed for users? Metrics if you have them, qualitative shift if you don't.</p>
+      <p>End with the thing you're most proud of, or the thing you'd do differently. Either is a good signal to a hiring manager.</p>
+      <a href="#" class="see-link">See product →</a>
+    </div>
+
+    <div class="next-project fade-in">
+      <p class="next-label">Next project</p>
+      <a href="../index.html" class="next-link">
+        <span class="next-title">All work</span>
+        <span class="next-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-strip">
+    <p class="footer-bio"><strong>Ayushi Pareek</strong> — senior product designer for developer tools, based in Bengaluru.</p>
+    <a href="mailto:ayushipareek@gmail.com" class="email-cta">Email me →</a>
   </div>
 
   <footer>
@@ -180,12 +234,12 @@
   <script>
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
     document.querySelectorAll('.fade-in').forEach(el => {
       if (el.getBoundingClientRect().top < window.innerHeight) { el.classList.add('visible'); }
-      else { observer.observe(el); }
+      else { obs.observe(el); }
     });
   </script>
 </body>
