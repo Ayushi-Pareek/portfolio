@@ -4,125 +4,189 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Parseable — Ayushi Pareek</title>
-  <meta name="description" content="Designing log analytics and observability UX at Parseable.">
-  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --bg:#0d0d0d; --surface:#161616; --border:#2a2a2a; --white:#ffffff; --grey1:#a0a0a0; --grey2:#5a5a5a; --max:780px; }
+    html { -webkit-font-smoothing: antialiased; font-size: 16px; }
+    body { background: var(--bg); color: var(--white); font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; height: auto; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2.5rem; transition: background 0.3s, border-color 0.3s; border-bottom: 1px solid transparent; }
+    nav.scrolled { background: rgba(13,13,13,0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom-color: var(--border); }
+    .nav-name { font-size: 0.9375rem; font-weight: 600; letter-spacing: -0.02em; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.875rem; color: var(--grey1); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--white); }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 2.5rem; }
+    .divider { height: 1px; background: var(--border); margin: 0 2.5rem; }
+
+    .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in.d1 { transition-delay: 0.08s; }
+    .fade-in.d2 { transition-delay: 0.16s; }
+    .fade-in.d3 { transition-delay: 0.24s; }
+
+    /* CASE HERO */
+    .case-hero { padding-top: 9rem; padding-bottom: 3.5rem; }
+
+    .back-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.875rem; color: var(--grey1); margin-bottom: 2.5rem; transition: color 0.15s; }
+    .back-link:hover { color: var(--white); }
+
+    .case-eyebrow { font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 1rem; }
+
+    .case-title { font-size: clamp(2rem, 5.5vw, 3.5rem); font-weight: 800; line-height: 1.0; letter-spacing: -0.04em; margin-bottom: 2.5rem; max-width: 600px; }
+
+    .case-meta { display: flex; gap: 2.5rem; flex-wrap: wrap; padding-bottom: 2.5rem; border-bottom: 1px solid var(--border); }
+    .meta-label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); display: block; margin-bottom: 0.25rem; }
+    .meta-value { font-size: 0.9375rem; font-weight: 500; }
+
+    /* COVER */
+    .case-cover { width: 100%; aspect-ratio: 16/9; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); margin-bottom: 0; }
+    .case-cover img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* BODY */
+    .case-body { padding-top: 4rem; padding-bottom: 5rem; }
+
+    .case-section { margin-bottom: 4rem; }
+    .case-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.75rem; }
+    .case-section h2 { font-size: clamp(1.375rem, 2.5vw, 1.875rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 1rem; }
+    .case-section p { font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 1rem; }
+    .case-section p:last-child { margin-bottom: 0; }
+
+    figure { margin: 3rem 0; }
+    .fig-img { background: var(--surface); aspect-ratio: 16/9; width: 100%; border-radius: 4px; overflow: hidden; }
+    .fig-img.tall { aspect-ratio: 4/3; }
+    .fig-img img { width: 100%; height: 100%; object-fit: cover; }
+    figcaption { font-size: 0.8125rem; color: var(--grey2); margin-top: 0.65rem; font-weight: 300; }
+
+    /* NAV BETWEEN CASES */
+    .case-nav { border-top: 1px solid var(--border); padding: 2.5rem 0 0; display: flex; justify-content: space-between; align-items: center; }
+    .case-nav-back { font-size: 0.875rem; color: var(--grey1); transition: color 0.15s; }
+    .case-nav-back:hover { color: var(--white); }
+    .case-nav-next { font-size: 1.125rem; font-weight: 700; letter-spacing: -0.02em; transition: opacity 0.15s; }
+    .case-nav-next:hover { opacity: 0.6; }
+
+    footer { padding: 2rem 2.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; border-top: 1px solid var(--border); margin-top: 4rem; }
+    footer span { font-size: 0.8125rem; color: var(--grey2); }
+
+    @media (max-width: 600px) {
+      nav { padding: 1.1rem 1.5rem; }
+      .wrap { padding: 0 1.5rem; }
+      .nav-links { gap: 1.25rem; }
+      footer { padding: 1.5rem; flex-direction: column; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav id="nav">
-    <a href="/" class="nav-name">Ayushi Pareek</a>
+    <a href="../index.html" class="nav-name">Ayushi Pareek</a>
     <ul class="nav-links">
-      <li><a href="/#work">Work</a></li>
-      <li><a href="/#about">About</a></li>
-      <li><a href="/#contact">Contact</a></li>
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- CASE HERO -->
-  <div class="page">
+  <div class="wrap">
     <div class="case-hero">
-      <a href="/" class="case-back">← Back</a>
-      <p class="case-company">Parseable · 2025–2026</p>
-      <h1 class="case-title">Designing observability for humans and AI agents</h1>
-      <div class="case-meta">
-        <div class="case-meta-item">
-          <span class="case-meta-label">Role</span>
-          <span class="case-meta-value">Product Designer</span>
-        </div>
-        <div class="case-meta-item">
-          <span class="case-meta-label">Scope</span>
-          <span class="case-meta-value">End-to-end product design</span>
-        </div>
-        <div class="case-meta-item">
-          <span class="case-meta-label">Team</span>
-          <span class="case-meta-value">Design, engineering, founders</span>
-        </div>
+      <a href="../index.html" class="back-link fade-in">← Back</a>
+      <p class="case-eyebrow fade-in d1">Parseable · 2025–2026</p>
+      <h1 class="case-title fade-in d2">Designing observability for humans and AI agents</h1>
+      <div class="case-meta fade-in d3">
+        <div><span class="meta-label">Role</span><span class="meta-value">Product Designer</span></div>
+        <div><span class="meta-label">Scope</span><span class="meta-value">End-to-end product design</span></div>
+        <div><span class="meta-label">Team</span><span class="meta-value">Engineering, founders</span></div>
       </div>
     </div>
   </div>
 
-  <!-- COVER IMAGE -->
-  <div style="width: 100%; background: #f0ede8; aspect-ratio: 16/9; margin-bottom: 0;">
-    <!-- Replace with: <img src="../assets/parseable-cover.jpg" alt="Parseable product overview"> -->
+  <div class="case-cover">
+    <!-- <img src="../assets/parseable-cover.jpg" alt="Parseable"> -->
   </div>
 
-  <!-- CASE BODY -->
-  <div class="page">
+  <div class="wrap">
     <div class="case-body">
 
-      <div class="case-section">
-        <p class="case-section-label">Overview</p>
+      <div class="case-section fade-in">
+        <p class="case-label">Overview</p>
         <h2>A log analytics platform built for engineers who can't afford guesswork</h2>
-        <p>Parseable is a high-performance log analytics and observability platform. When I joined, the product needed a designer to own it end-to-end, from the core querying experience through to a completely novel problem space: AI agent observability.</p>
-        <p>I was the sole designer working directly with the engineering team and founders, responsible for everything from information architecture and workflow definition to the final shipped product.</p>
+        <p>Add your overview here. What is Parseable, what did you own, and what is the one-sentence version of why this case study matters?</p>
       </div>
 
-      <!-- Image placeholder -->
-      <figure class="case-image">
-        <div style="background: #f5f2ee; aspect-ratio: 16/9;"></div>
-        <figcaption>Add your image here with a short caption describing what it shows.</figcaption>
+      <figure class="fade-in">
+        <div class="fig-img"></div>
+        <figcaption>Add a caption describing what this image shows.</figcaption>
       </figure>
 
-      <div class="case-section">
-        <p class="case-section-label">Problem</p>
+      <div class="case-section fade-in">
+        <p class="case-label">Problem</p>
         <h2>Engineers drowning in data, not finding signal</h2>
-        <p>Replace this with your actual problem framing. What was hard? What didn't exist? What were engineers actually trying to do when they opened the product? This is where you establish that you understand the domain, not just the UI.</p>
-        <p>Be specific. Name the failure mode. If you ran discovery sessions or looked at how engineers were working around the product, say so.</p>
+        <p>Replace with your actual problem framing. What was hard? What were engineers actually trying to do? What didn't exist before? Be specific about the failure mode.</p>
       </div>
 
-      <!-- Image placeholder -->
-      <figure class="case-image">
-        <div style="background: #f0ede8; aspect-ratio: 4/3;"></div>
-        <figcaption>Add your image here.</figcaption>
+      <figure class="fade-in">
+        <div class="fig-img tall"></div>
+        <figcaption>Add a caption.</figcaption>
       </figure>
 
-      <div class="case-section">
-        <p class="case-section-label">Process</p>
+      <div class="case-section fade-in">
+        <p class="case-label">Process</p>
         <h2>Understanding the model before touching the interface</h2>
-        <p>Replace with your actual process. What did you learn first? What decisions did you make and why? What did you throw out? Show that you think before you design, and that you're willing to go back when something isn't working.</p>
-        <p>Include the systems thinking here: how you approached information architecture, how you defined the interaction model for the query experience, how the design system emerged from the product's complexity.</p>
+        <p>Replace with your actual process. What did you learn first? What decisions did you make and why? Show that you think before you design.</p>
+        <p>Include the systems thinking here: how you approached information architecture, how the interaction model emerged, how the design system grew from the product's complexity.</p>
       </div>
 
-      <!-- Image placeholder -->
-      <figure class="case-image">
-        <div style="background: #eaeef2; aspect-ratio: 16/9;"></div>
-        <figcaption>Add your image here.</figcaption>
+      <figure class="fade-in">
+        <div class="fig-img"></div>
+        <figcaption>Add a caption.</figcaption>
       </figure>
 
-      <div class="case-section">
-        <p class="case-section-label">AI Agent Observability</p>
+      <div class="case-section fade-in">
+        <p class="case-label">AI Agent Observability</p>
         <h2>Designing for a problem space that didn't exist yet</h2>
-        <p>This section is worth its own heading because it's the most differentiated part of your work at Parseable. Replace this with your actual story: how you defined the problem, what mental model you built for how teams think about agent behavior, and what the interface actually lets engineers do.</p>
+        <p>This section earns its own heading. Replace with your actual story: how you defined the problem, what mental model you built for how teams think about agent behavior, and what the interface lets engineers actually do.</p>
       </div>
 
-      <!-- Image placeholder -->
-      <figure class="case-image">
-        <div style="background: #f0ede8; aspect-ratio: 16/9;"></div>
-        <figcaption>Add your image here.</figcaption>
+      <figure class="fade-in">
+        <div class="fig-img"></div>
+        <figcaption>Add a caption.</figcaption>
       </figure>
 
-      <div class="case-section">
-        <p class="case-section-label">Outcome</p>
-        <h2>What shipped and what it changed</h2>
-        <p>Replace with your actual outcomes. What did you ship? What did it change for users? If you have metrics, use them. If you don't, describe the qualitative shift: what was engineers' experience before vs after?</p>
+      <div class="case-section fade-in">
+        <p class="case-label">Outcome</p>
+        <h2>What shipped and what changed</h2>
+        <p>Replace with outcomes. What did you ship? What changed for users? Metrics if you have them, qualitative shift if you don't.</p>
       </div>
 
-      <!-- NEXT CASE NAV -->
-      <div class="case-nav">
-        <a href="/" class="case-nav-link">← All work</a>
+      <div class="case-nav fade-in">
+        <a href="../index.html" class="case-nav-back">← All work</a>
         <a href="deepsource.html" class="case-nav-next">DeepSource →</a>
       </div>
 
     </div>
   </div>
 
+  <footer>
+    <span>Ayushi Pareek</span>
+    <span>©2025</span>
+  </footer>
+
   <script>
     const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight) { el.classList.add('visible'); }
+      else { observer.observe(el); }
     });
   </script>
-
 </body>
 </html>
