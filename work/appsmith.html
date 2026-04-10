@@ -48,7 +48,6 @@
     .sidebar-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem; }
     .sidebar-items { font-size: 0.9375rem; color: var(--grey1); font-weight: 300; line-height: 1.85; }
 
-    /* Full-bleed images — break out of wrap */
     .full-img { width: 100%; background: var(--surface); }
     .full-img.r169 { aspect-ratio: 16/9; }
     .full-img.r43  { aspect-ratio: 4/3; }
@@ -115,91 +114,88 @@
     <div class="overview-grid fade-in d2">
       <div class="overview-body">
         <h2>Overview</h2>
-        <p>Replace this with your overview. What is Parseable, what did you own, and what made this worth a full case study? Keep it to 2–3 paragraphs that set up the rest without giving everything away.</p>
-        <p>This is also a good place to link to the live product if it's accessible.</p>
-        <a href="#" class="see-link">See product →</a>
+        <p>Appsmith is an open-source platform that lets backend developers build and deploy internal applications without front-end expertise. Developers drag widgets onto a canvas, configure them through a property pane, and write JavaScript where they need logic.</p>
+        <p>I was brought in to design a no-code solution for creating workflows — the behaviour that happens when a user interacts with a widget. I owned the interaction model and visual design end-to-end, working with a PM to define requirements and a design manager for final review.</p>
+        <a href="https://www.appsmith.com" class="see-link" target="_blank" rel="noopener">See product →</a>
       </div>
       <div>
         <div class="sidebar-block">
           <p class="sidebar-label">My contribution</p>
           <div class="sidebar-items">
-            Front-end developer experience<br>
-            Information architecture<br>
-            Design system<br>
-            JavaScript &amp; error handling UX
+            Interaction design<br>
+            Visual design<br>
+            Component design<br>
+            Developer handoff
           </div>
         </div>
         <div class="sidebar-block">
           <p class="sidebar-label">The team</p>
           <div class="sidebar-items">
             1 × product designer<br>
-            4 × engineers<br>
-            2 × founders
+            1 × PM<br>
+            1 × design manager
           </div>
         </div>
         <div class="sidebar-block">
-          <p class="sidebar-label">Year</p>
-          <div class="sidebar-items">2022 – 2023</div>
+          <p class="sidebar-label">Type</p>
+          <div class="sidebar-items">New feature on existing product</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- FULL-BLEED COVER -->
-  <div class="full-img r169 fade-in" style="background: linear-gradient(135deg,#2e1a2e,#1e1630);">
-    <!-- <img src="../assets/appsmith-cover.jpg" alt="Parseable overview"> -->
+  <div class="full-img r169 fade-in" style="background: linear-gradient(135deg,#0d1520,#101a2a);">
+    <!-- <img src="../assets/appsmith-cover.jpg" alt="Appsmith action selector overview"> -->
   </div>
 
   <div class="spacer"></div>
 
   <div class="wrap">
     <div class="case-section fade-in">
-      <h2>Process</h2>
-      <h3>Understanding the system before touching the interface</h3>
-      <p>Replace with your actual process. What did you learn first about how observability platforms work? What did engineers tell you about how they actually debug production issues? Show that you went deep on the domain before designing anything.</p>
+      <h2>The problem</h2>
+      <h3>Workflows existed, but only if you could write them</h3>
+      <p>Before this feature, adding behaviour to a widget meant writing JavaScript. That worked for developers who were comfortable with code — but Appsmith's whole premise is that not everyone building internal tools needs to be. For users who weren't confident writing JS, widgets sat largely static. The more powerful the platform became, the wider this gap grew.</p>
+      <p>Research and user interviews confirmed the hypothesis: there was real demand for a no-code way to attach actions to widgets, and it was blocking a portion of users from building anything meaningful at all.</p>
 
-      <h3>Designing for telemetry data at scale</h3>
-      <p>Replace with how you approached the core querying and investigation experience. What made it hard? What decisions did you make about information architecture, data visualization density, and how filters and queries should behave?</p>
-      <p>Be specific about the tradeoffs. A candidate who can name the tension between information density and visual clarity is more credible than one who just shows polished mocks.</p>
+      <h3>What "no-code workflow" actually needed to mean</h3>
+      <p>The insight from research that shaped the entire design: users who needed no-code support rarely needed more than two steps. Define what happens on success and what happens on failure — that covers the vast majority of real workflows. Users building something more complex than that almost always knew JavaScript and would write it themselves. The design didn't need to be a full visual programming environment. It needed to be exactly two steps, done well.</p>
     </div>
   </div>
 
-  <div class="full-img r169 fade-in" style="background:#1a1020;">
-    <!-- <img src="../assets/appsmith-dx.jpg" alt="Query interface"> -->
+  <div class="full-img r169 fade-in" style="background:#0d1520;">
+    <!-- <img src="../assets/appsmith-workflow-diagram.jpg" alt="Two-step workflow diagram"> -->
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="wrap">
+    <div class="case-section fade-in">
+      <h2>The constraint that made it better</h2>
+      <h3>No new screens</h3>
+      <p>The hard constraint on this project was spatial: the action selector had to live inside the existing property pane sidebar. Adding a new full screen would have broken the established interaction pattern of the platform — the property pane is where widget configuration happens, and that pattern had to hold.</p>
+      <p>Most competitors had built elaborate, full-page workflow builders. We couldn't replicate that, and once I understood the two-step insight from research, I realised we didn't need to. The constraint and the finding pointed in the same direction: keep it small, keep it focused, and trust that users who need more will write JavaScript.</p>
+
+      <h3>What I designed</h3>
+      <p>The action selector drops down inline from a widget event — the moment a developer clicks to configure what happens on a click or search, the selector opens in context. Step one: choose an action from a categorised list. Step two: define what happens on success and what happens on failure, each of which can itself chain to another action. That's the full depth of the no-code path.</p>
+      <p>Callbacks — the on-success and on-failure branches — are surfaced directly in the property pane as collapsible sections, so developers can see the shape of a workflow at a glance without expanding everything. The component handles the common case cleanly and steps aside for JS when users need it.</p>
+    </div>
+  </div>
+
+  <div class="full-img r169 fade-in" style="background:#0d1218;">
+    <!-- <img src="../assets/appsmith-action-selector.jpg" alt="Action selector components"> -->
   </div>
   <div class="spacer-sm"></div>
-  <div class="full-img r43 fade-in" style="background:#180f1a;">
-    <!-- <img src="../assets/appsmith-js.jpg" alt="Log view"> -->
+  <div class="full-img r43 fade-in" style="background:#0a1015;">
+    <!-- <img src="../assets/appsmith-callbacks.jpg" alt="Callback configuration in property pane"> -->
   </div>
 
   <div class="spacer"></div>
 
   <div class="wrap">
     <div class="case-section fade-in">
-      <h3>Collaborating with the engineering team</h3>
-      <p>Replace with how you worked with engineers day to day. What did implementation decisions look like? Where did you push back, and where did constraints shape better solutions? This is where you show you are not a handoff designer.</p>
+      <h2>Testing</h2>
+      <p>User testing confirmed that people understood how to use the action selector to create workflows without guidance. Minor usability issues surfaced and were fixed before release — nothing that required rethinking the model, which validated that the two-step structure matched how users were actually thinking about the problem.</p>
     </div>
-  </div>
-
-  <div class="full-img r169 fade-in" style="background:#1a1020;">
-    <!-- <img src="../assets/appsmith-errors.jpg" alt="Design system components"> -->
-  </div>
-
-  <div class="spacer"></div>
-
-  <div class="wrap">
-    <div class="case-section fade-in">
-      <h2>JavaScript and error handling</h2>
-      <h3>A problem space that didn't exist yet</h3>
-      <p>Replace with your actual story. How did you define what "observability" even means for an AI agent? What mental model did you build for how teams think about agent behavior vs. traditional system behavior?</p>
-
-      <h3>What the interface needed to do</h3>
-      <p>Replace with what you designed and why. What does an engineer actually need to see when an LLM pipeline does something unexpected? How did you make that visible without overwhelming them with raw trace data?</p>
-    </div>
-  </div>
-
-  <div class="full-img r169 fade-in" style="background:#15101a;">
-    <!-- <img src="../assets/appsmith-flow.jpg" alt="AI agent observability"> -->
   </div>
 
   <div class="spacer"></div>
@@ -207,15 +203,35 @@
   <div class="wrap">
     <div class="case-section fade-in">
       <h2>Outcome</h2>
-      <p>Replace with your outcomes. What shipped? What changed for users? Metrics if you have them, qualitative shift if you don't.</p>
-      <p>End with the thing you're most proud of, or the thing you'd do differently. Either is a good signal to a hiring manager.</p>
-      <a href="#" class="see-link">See product →</a>
+
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 2.5rem;">
+        <div style="background: var(--surface); padding: 1.75rem 1.5rem;">
+          <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem;">Callbacks created</p>
+          <p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 0.5rem;">+62%</p>
+          <p style="font-size: 0.875rem; color: var(--grey2); font-weight: 300; margin: 0;">rise in second-level actions after launch</p>
+        </div>
+        <div style="background: var(--surface); padding: 1.75rem 1.5rem;">
+          <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem;">Complex workflows</p>
+          <p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 0.5rem;">Up</p>
+          <p style="font-size: 0.875rem; color: var(--grey2); font-weight: 300; margin: 0;">more users building multi-step flows than before</p>
+        </div>
+      </div>
+
+      <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 2.5rem;">The 62% rise in callbacks is the clearest signal: users weren't just adding single actions anymore — they were building conditional flows with success and failure branches. The feature unlocked complexity that existed in the platform but wasn't previously accessible without writing code.</p>
+
+      <div style="border-left: 1px solid var(--border); padding-left: 1.5rem; margin-bottom: 2.5rem;">
+        <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 1rem;">What this project taught me</p>
+        <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 1rem;">The competitive research initially felt like a constraint — everyone else had built elaborate workflow builders and we couldn't. But the research finding made the constraint irrelevant: our users didn't need an elaborate workflow builder. They needed two steps done clearly. Designing less, on purpose, because the data said so, is a different thing from designing less because of time pressure. This was the former.</p>
+        <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin: 0;">The spatial constraint — fitting everything into the existing sidebar — pushed the design toward something more focused than a blank canvas would have produced. Constraints that feel like limitations often just are. But occasionally they're doing design work for you.</p>
+      </div>
+
+      <a href="https://www.appsmith.com" class="see-link" target="_blank" rel="noopener">See product →</a>
     </div>
 
     <div class="next-project fade-in">
       <p class="next-label">Next project</p>
-      <a href="../index.html" class="next-link">
-        <span class="next-title">All work</span>
+      <a href="parseable.html" class="next-link">
+        <span class="next-title">Parseable</span>
         <span class="next-arrow">→</span>
       </a>
     </div>
