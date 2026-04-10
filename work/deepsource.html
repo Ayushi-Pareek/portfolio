@@ -48,7 +48,6 @@
     .sidebar-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem; }
     .sidebar-items { font-size: 0.9375rem; color: var(--grey1); font-weight: 300; line-height: 1.85; }
 
-    /* Full-bleed images — break out of wrap */
     .full-img { width: 100%; background: var(--surface); }
     .full-img.r169 { aspect-ratio: 16/9; }
     .full-img.r43  { aspect-ratio: 4/3; }
@@ -107,7 +106,7 @@
       <span>→</span>
       <a href="../index.html#work">Work</a>
       <span>→</span>
-      <span>Parseable</span>
+      <span>DeepSource</span>
     </div>
 
     <h1 class="page-title fade-in d1">DeepSource</h1>
@@ -115,91 +114,104 @@
     <div class="overview-grid fade-in d2">
       <div class="overview-body">
         <h2>Overview</h2>
-        <p>Replace this with your overview. What is Parseable, what did you own, and what made this worth a full case study? Keep it to 2–3 paragraphs that set up the rest without giving everything away.</p>
-        <p>This is also a good place to link to the live product if it's accessible.</p>
-        <a href="#" class="see-link">See product →</a>
+        <p>DeepSource is a static analysis tool that catches code quality issues on every pull request, before bad code reaches the main branch. When I joined as the first and only designer, the product worked but felt unfinished — inconsistent components, navigation that confused users, and a key feature almost nobody was using.</p>
+        <p>Over nine months I led a full platform redesign and rebrand: from a UX audit and user research through to a new information architecture, a rebuilt design system, and high-fidelity handoff across every major surface.</p>
+        <a href="https://deepsource.com" class="see-link" target="_blank" rel="noopener">See product →</a>
       </div>
       <div>
         <div class="sidebar-block">
           <p class="sidebar-label">My contribution</p>
           <div class="sidebar-items">
-            Product redesign<br>
+            UX audit and research<br>
             Information architecture<br>
-            Design system<br>
-            Brand &amp; visual identity
+            Platform redesign<br>
+            Design system and rebrand
           </div>
         </div>
         <div class="sidebar-block">
           <p class="sidebar-label">The team</p>
           <div class="sidebar-items">
             1 × product designer<br>
-            4 × engineers<br>
+            Engineering team<br>
             2 × founders
           </div>
         </div>
         <div class="sidebar-block">
-          <p class="sidebar-label">Year</p>
-          <div class="sidebar-items">2019 – 2021</div>
+          <p class="sidebar-label">Duration</p>
+          <div class="sidebar-items">9 months</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- FULL-BLEED COVER -->
-  <div class="full-img r169 fade-in" style="background: linear-gradient(135deg,#1a2e1a,#16312a);">
-    <!-- <img src="../assets/deepsource-cover.jpg" alt="Parseable overview"> -->
+  <div class="full-img r169 fade-in" style="background: linear-gradient(135deg,#0f1a15,#1a2410);">
+    <!-- <img src="../assets/deepsource-cover.jpg" alt="DeepSource redesign overview"> -->
   </div>
 
   <div class="spacer"></div>
 
   <div class="wrap">
     <div class="case-section fade-in">
-      <h2>Process</h2>
-      <h3>Understanding the system before touching the interface</h3>
-      <p>Replace with your actual process. What did you learn first about how observability platforms work? What did engineers tell you about how they actually debug production issues? Show that you went deep on the domain before designing anything.</p>
+      <h2>Starting with a UX audit and real users</h2>
+      <h3>What the audit found</h3>
+      <p>Before touching anything, I spent time inside the existing product mapping where it broke down. The navigation had no affordance for going back to the repository list — the only way was clicking the logo. Users working across two or more repositories, which was the majority, had no reliable way to switch between them. The product's most powerful feature, Autofix, was buried to the point that most users didn't know it existed.</p>
+      <p>The design itself was inconsistent throughout — multiple versions of the same component, no standardisation, no underlying system. Every new feature added more debt.</p>
 
-      <h3>Designing for telemetry data at scale</h3>
-      <p>Replace with how you approached the core querying and investigation experience. What made it hard? What decisions did you make about information architecture, data visualization density, and how filters and queries should behave?</p>
-      <p>Be specific about the tradeoffs. A candidate who can name the tension between information density and visual clarity is more credible than one who just shows polished mocks.</p>
+      <h3>What users said</h3>
+      <p>I ran interviews with the team and with users and found the same themes appearing consistently: navigation felt unpredictable, people were regularly ending up on the homepage when they were trying to go somewhere else, and the overview screens gave them colours but no real signal. There was no way to answer a simple question like "is our code quality getting better over time?"</p>
+      <p>Card sorting helped me move from a list of complaints to a prioritised scope — it surfaced which improvements were felt most acutely and which features users actually understood vs. which ones they were guessing at.</p>
     </div>
   </div>
 
-  <div class="full-img r169 fade-in" style="background:#10190f;">
-    <!-- <img src="../assets/deepsource-product.jpg" alt="Query interface"> -->
+  <div class="full-img r169 fade-in" style="background:#111a10;">
+    <!-- <img src="../assets/deepsource-research.jpg" alt="User research and card sorting"> -->
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="wrap">
+    <div class="case-section fade-in">
+      <h2>Three design principles, kept short on purpose</h2>
+      <p>Before designing anything, I needed principles that were specific enough to make decisions with — not values that could mean anything.</p>
+
+      <h3>Developer first, not buyer first</h3>
+      <p>The previous product tried to speak to everyone. The rebrand committed to a bottom-up approach: appeal to the developers who use the tool every day, not the managers who approve the budget. Familiar design language, no enterprise-sales aesthetic, UX that gets out of the way. The bet was that if developers loved it, adoption would follow. It did.</p>
+
+      <h3>Visible improvements</h3>
+      <p>Metrics needed to tell a story. Showing a number in red or green is not a metric — it's a colour. The redesign introduced historical trend views so teams could see movement over time, not just current state. Managers and developers needed different things from the same data, and the interface had to serve both without becoming a dashboard for dashboards.</p>
+
+      <h3>Components first</h3>
+      <p>With nine months and a lot of ground to cover, I drove the design system with atomic design from the start. Tokens and base components before anything else, so that every screen built on a stable foundation rather than inventing its own patterns. The goal wasn't a perfect system — it was a system that could survive new releases without accumulating more debt.</p>
+    </div>
+  </div>
+
+  <div class="full-img r43 fade-in" style="background:#0f1510;">
+    <!-- <img src="../assets/deepsource-system.jpg" alt="Design system components"> -->
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="wrap">
+    <div class="case-section fade-in">
+      <h2>The key design decisions</h2>
+
+      <h3>Navigation: a sidebar that knows where you are</h3>
+      <p>The fix for the navigation problem was a persistent sidebar that let users move between repositories without losing context and without hunting for the logo. Repository switching became a first-class interaction rather than an accident waiting to happen. Issue and language filters were added to surface the most relevant information first, so users working on a specific area weren't sifting through everything.</p>
+
+      <h3>Surfacing Autofix where the work happens</h3>
+      <p>Autofix — which lets developers push fixes directly without manually committing to their VCS — was genuinely valuable but almost invisible. I gave it a dedicated tab and introduced metrics showing time saved, making the value concrete rather than implied. A filter on the issues page also let users surface only the issues with available autofixes, so the feature was accessible exactly when and where it was relevant.</p>
+
+      <h3>Repository home screen as a real overview</h3>
+      <p>The redesigned repository home screen showed current status and historical trends together, in the same view. The goal was for a developer to land on this screen and immediately understand both where things stand and whether they're moving in the right direction — without clicking anywhere else first.</p>
+    </div>
+  </div>
+
+  <div class="full-img r169 fade-in" style="background:#101810;">
+    <!-- <img src="../assets/deepsource-screens.jpg" alt="Redesigned screens"> -->
   </div>
   <div class="spacer-sm"></div>
-  <div class="full-img r43 fade-in" style="background:#0f1a10;">
-    <!-- <img src="../assets/deepsource-pr.jpg" alt="Log view"> -->
-  </div>
-
-  <div class="spacer"></div>
-
-  <div class="wrap">
-    <div class="case-section fade-in">
-      <h3>Collaborating with the engineering team</h3>
-      <p>Replace with how you worked with engineers day to day. What did implementation decisions look like? Where did you push back, and where did constraints shape better solutions? This is where you show you are not a handoff designer.</p>
-    </div>
-  </div>
-
-  <div class="full-img r169 fade-in" style="background:#0e180e;">
-    <!-- <img src="../assets/deepsource-zeal.jpg" alt="Design system components"> -->
-  </div>
-
-  <div class="spacer"></div>
-
-  <div class="wrap">
-    <div class="case-section fade-in">
-      <h2>Zeal design system</h2>
-      <h3>A problem space that didn't exist yet</h3>
-      <p>Replace with your actual story. How did you define what "observability" even means for an AI agent? What mental model did you build for how teams think about agent behavior vs. traditional system behavior?</p>
-
-      <h3>What the interface needed to do</h3>
-      <p>Replace with what you designed and why. What does an engineer actually need to see when an LLM pipeline does something unexpected? How did you make that visible without overwhelming them with raw trace data?</p>
-    </div>
-  </div>
-
-  <div class="full-img r169 fade-in" style="background:#0f1a0f;">
-    <!-- <img src="../assets/deepsource-system.jpg" alt="AI agent observability"> -->
+  <div class="full-img r43 fade-in" style="background:#0d1a0d;">
+    <!-- <img src="../assets/deepsource-autofix.jpg" alt="Autofix tab and filters"> -->
   </div>
 
   <div class="spacer"></div>
@@ -207,9 +219,34 @@
   <div class="wrap">
     <div class="case-section fade-in">
       <h2>Outcome</h2>
-      <p>Replace with your outcomes. What shipped? What changed for users? Metrics if you have them, qualitative shift if you don't.</p>
-      <p>End with the thing you're most proud of, or the thing you'd do differently. Either is a good signal to a hiring manager.</p>
-      <a href="#" class="see-link">See product →</a>
+
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 2.5rem;">
+        <div style="background: var(--surface); padding: 1.75rem 1.5rem;">
+          <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem;">Autofix usage</p>
+          <p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 0.5rem;">+72%</p>
+          <p style="font-size: 0.875rem; color: var(--grey2); font-weight: 300; margin: 0;">after surfacing the feature where it mattered</p>
+        </div>
+        <div style="background: var(--surface); padding: 1.75rem 1.5rem;">
+          <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem;">Seed funding secured</p>
+          <p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 0.5rem;">$2.6M</p>
+          <p style="font-size: 0.875rem; color: var(--grey2); font-weight: 300; margin: 0;">during the redesign period</p>
+        </div>
+        <div style="background: var(--surface); padding: 1.75rem 1.5rem;">
+          <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem;">Design system</p>
+          <p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 0.5rem;">0→1</p>
+          <p style="font-size: 0.875rem; color: var(--grey2); font-weight: 300; margin: 0;">atomic system built to survive new releases</p>
+        </div>
+      </div>
+
+      <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 2.5rem;">The redesign demo impressed enough that founders were fielding questions about who designed it. Active users grew, enterprise deals followed, and revenue increased. The bet on developer-first design — building for the people using the tool, not the people buying it — turned out to be the right one.</p>
+
+      <div style="border-left: 1px solid var(--border); padding-left: 1.5rem; margin-bottom: 2.5rem;">
+        <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 1rem;">What I'd do differently</p>
+        <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 1rem;">Nine months is enough time to do this well, but I underestimated how much time the design system would need once we got into complex components. Atomic design was the right call — I'd just start the documentation earlier, before the component count makes it feel impossible to catch up.</p>
+        <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin: 0;">The Autofix result validated something worth carrying forward: discoverability is not a nice-to-have. A 72% usage increase came from putting a feature where people could find it, not from changing the feature itself.</p>
+      </div>
+
+      <a href="https://deepsource.com" class="see-link" target="_blank" rel="noopener">See product →</a>
     </div>
 
     <div class="next-project fade-in">
