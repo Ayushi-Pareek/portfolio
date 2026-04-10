@@ -561,3 +561,72 @@ footer {
     align-items: flex-start;
   }
 }
+
+
+/* ===== FACADE STYLE (TARGETED TO YOUR FILE) ===== */
+
+/* Base */
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif !important;
+  background: #FAFAFA !important;
+  color: #111 !important;
+}
+
+/* HERO TEXT (your main heading inside .hero) */
+.hero h1,
+.hero h2 {
+  font-size: 72px !important;
+  line-height: 1.1 !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* SECTION TITLES (About, Work, Contact) */
+.section-title {
+  font-size: 40px !important;
+  line-height: 1.1 !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* BODY TEXT */
+.step-text p,
+.contact-info li,
+figcaption {
+  font-size: 20px !important;
+  line-height: 1.5 !important;
+  color: #6B6B6B !important;
+}
+
+/* LINKS */
+.contact-info a,
+a {
+  color: inherit !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid #E0E0E0 !important;
+}
+
+a:hover {
+  border-color: #111 !important;
+}
+
+/* REMOVE YOUR CURRENT VISUAL STYLE */
+.gallery__img,
+.image2 {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.container,
+.step-info,
+.gallery,
+.contact-info {
+  background: transparent !important;
+}
+
+/* REMOVE LINES + DECOR (you have vertical borders) */
+.vl-border1,
+.vl-border2,
+.vl-border3 {
+  display: none !important;
+}
