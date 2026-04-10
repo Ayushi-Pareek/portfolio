@@ -48,7 +48,6 @@
     .sidebar-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem; }
     .sidebar-items { font-size: 0.9375rem; color: var(--grey1); font-weight: 300; line-height: 1.85; }
 
-    /* Full-bleed images — break out of wrap */
     .full-img { width: 100%; background: var(--surface); }
     .full-img.r169 { aspect-ratio: 16/9; }
     .full-img.r43  { aspect-ratio: 4/3; }
@@ -115,9 +114,9 @@
     <div class="overview-grid fade-in d2">
       <div class="overview-body">
         <h2>Overview</h2>
-        <p>Replace this with your overview. What is Parseable, what did you own, and what made this worth a full case study? Keep it to 2–3 paragraphs that set up the rest without giving everything away.</p>
-        <p>This is also a good place to link to the live product if it's accessible.</p>
-        <a href="#" class="see-link">See product →</a>
+        <p>Parseable is a high-compression log storage and observability platform built as a cost-efficient alternative to tools like Datadog. I joined as the sole product designer when the product was early and rough — a handful of base log, metric, and trace pages with an existing design system I largely rebuilt, few established patterns worth keeping, and significant UX debt.</p>
+        <p>I rebuilt the foundation while expanding the product across 18+ features, working directly with the founders and engineering team on everything from core querying workflows to AI-assisted investigation — all while minimising disruption to the frontend team already building against existing components.</p>
+        <a href="https://www.parseable.com" class="see-link" target="_blank" rel="noopener">See product →</a>
       </div>
       <div>
         <div class="sidebar-block">
@@ -125,8 +124,8 @@
           <div class="sidebar-items">
             End-to-end product design<br>
             Information architecture<br>
-            Design system<br>
-            AI agent observability UX
+            Design system rebuild<br>
+            AI investigation UX
           </div>
         </div>
         <div class="sidebar-block">
@@ -134,7 +133,7 @@
           <div class="sidebar-items">
             1 × product designer<br>
             4 × engineers<br>
-            2 × founders
+            1 × founder
           </div>
         </div>
         <div class="sidebar-block">
@@ -154,52 +153,74 @@
 
   <div class="wrap">
     <div class="case-section fade-in">
-      <h2>Process</h2>
-      <h3>Understanding the system before touching the interface</h3>
-      <p>Replace with your actual process. What did you learn first about how observability platforms work? What did engineers tell you about how they actually debug production issues? Show that you went deep on the domain before designing anything.</p>
+      <h2>The problem worth designing for</h2>
+      <h3>It's not a features problem</h3>
+      <p>Developer observability tools have a usability problem that isn't about features. Datadog has every feature. The problem is that debugging under pressure is non-linear — engineers hold multiple hypotheses simultaneously, pivot between them, and need to move fast across related data. Most tools are built around predefined dashboards and sequential query flows that break this pattern. You have to know what you're looking for before you can look.</p>
+      <p>The design challenge wasn't "make this cheaper than Datadog." It was: design a system where engineers can investigate quickly, without friction, without being forced into workflows that don't match how they actually think.</p>
+    </div>
+  </div>
 
-      <h3>Designing for telemetry data at scale</h3>
-      <p>Replace with how you approached the core querying and investigation experience. What made it hard? What decisions did you make about information architecture, data visualization density, and how filters and queries should behave?</p>
-      <p>Be specific about the tradeoffs. A candidate who can name the tension between information density and visual clarity is more credible than one who just shows polished mocks.</p>
+  <div class="spacer"></div>
+
+  <div class="wrap">
+    <div class="case-section fade-in">
+      <h2>Filtering: the thing nobody notices until it's gone</h2>
+      <h3>Every round trip has a cost</h3>
+      <p>The filtering system runs across every surface in the platform — logs, traces, metrics, dashboards. On paper that sounds like a technical decision. In practice, it's the thing that determines whether debugging feels fast or exhausting.</p>
+      <p>Most observability tools make filtering a deliberate act. You go somewhere, type something, come back. Every round trip adds cognitive cost when you're already context-switching under pressure.</p>
+
+      <h3>Filtering always where the user is</h3>
+      <p>I designed the system so the filter is always at hand. The top five field values are surfaced on click — no typing required for the common case. Any field in a log, trace, or metric table can be filtered directly from the table row, with include or exclude as a one-click option. Filters persist across related views and can be saved as named views for repeated workflows. A sidebar with field categories keeps the full filter space discoverable without overwhelming the interface.</p>
+      <p>None of these are individually remarkable. Together they compound into a noticeably different pace of investigation — one where you're never hunting for the filter UI, never retyping something you already specified, never losing your state because you navigated away.</p>
     </div>
   </div>
 
   <div class="full-img r169 fade-in" style="background:#111620;">
-    <!-- <img src="../assets/parseable-query.jpg" alt="Query interface"> -->
+    <!-- <img src="../assets/parseable-filtering.jpg" alt="Filtering system"> -->
   </div>
   <div class="spacer-sm"></div>
   <div class="full-img r43 fade-in" style="background:#0f1a15;">
-    <!-- <img src="../assets/parseable-logs.jpg" alt="Log view"> -->
+    <!-- <img src="../assets/parseable-logs.jpg" alt="Log view with inline filters"> -->
   </div>
 
   <div class="spacer"></div>
 
   <div class="wrap">
     <div class="case-section fade-in">
-      <h3>Collaborating with the engineering team</h3>
-      <p>Replace with how you worked with engineers day to day. What did implementation decisions look like? Where did you push back, and where did constraints shape better solutions? This is where you show you are not a handoff designer.</p>
+      <h2>Onboarding: activation as a design metric</h2>
+      <h3>The cold-start problem</h3>
+      <p>Observability tools have a cold-start problem. The product only shows its value when your data is in it, but connecting your data requires setup, which requires confidence the tool is worth setting up. Most tools resolve this badly — either they skip straight to an empty state, or they front-load so much configuration that users abandon before seeing anything.</p>
+
+      <h3>Two paths, one screen</h3>
+      <p>I reduced the entry to two paths from a single screen: connect your own data, or explore with demo data immediately. No multi-step wizard, no required configuration before the platform opens. Users who weren't ready to commit to setup could see the full product working within seconds.</p>
+      <p>The result: 50% of users who signed up went on to connect their own data and begin real exploration. Subsequent onboarding improvements were on track toward an 80% target before the engagement ended. For a developer tool where meaningful activation requires actual setup effort, 50% is a strong baseline — and the direction of improvement validated the approach.</p>
     </div>
   </div>
 
   <div class="full-img r169 fade-in" style="background:#151015;">
-    <!-- <img src="../assets/parseable-system.jpg" alt="Design system components"> -->
+    <!-- <img src="../assets/parseable-onboarding.jpg" alt="Onboarding two-path screen"> -->
   </div>
 
   <div class="spacer"></div>
 
   <div class="wrap">
     <div class="case-section fade-in">
-      <h2>AI agent observability</h2>
-      <h3>A problem space that didn't exist yet</h3>
-      <p>Replace with your actual story. How did you define what "observability" even means for an AI agent? What mental model did you build for how teams think about agent behavior vs. traditional system behavior?</p>
+      <h2>Keystone: designing for how debugging actually happens</h2>
+      <h3>A direction, not a design</h3>
+      <p>The founder's instinct from the start was that chat wouldn't work — debugging isn't linear, and a canvas that supports branching exploration would match how engineers actually investigate. That framing was right. My job was to figure out what that actually meant as a designed product.</p>
+      <p>Debugging an incident means running parallel threads simultaneously: why did latency spike, which service was affected, what changed in that window, is this correlated with a deployment. Chat forces you to serialise that process. Earlier threads disappear as the conversation moves forward, and you lose the spatial relationship between related findings. The canvas had to solve for that.</p>
 
-      <h3>What the interface needed to do</h3>
-      <p>Replace with what you designed and why. What does an engineer actually need to see when an LLM pipeline does something unexpected? How did you make that visible without overwhelming them with raw trace data?</p>
+      <h3>What I designed</h3>
+      <p>Each question produces an answer node. From any answer, the user can branch into a new question — following a different hypothesis without abandoning the thread they were on. Multiple branches can exist simultaneously, spatially arranged as the investigation develops. Visualisations attach directly to the nodes that generated them, so a chart stays connected to the question that produced it rather than floating in a scroll.</p>
+      <p>The specific interaction decisions I owned: how dataset and time range selection is validated before queries run, so the system confirms its interpretation before acting; how the SQL agent's output is presented without exposing raw query complexity to users who don't need it; how suggested follow-up questions are surfaced to guide less experienced users without constraining advanced ones; and how findings can be pinned to dashboards directly from the canvas without breaking the investigation flow.</p>
+
+      <h3>The design argument</h3>
+      <p>The interface should match the mental model, not force the mental model to match the interface. Engineers investigating incidents think spatially and in parallel. The canvas lets them.</p>
     </div>
   </div>
 
   <div class="full-img r169 fade-in" style="background:#101520;">
-    <!-- <img src="../assets/parseable-agents.jpg" alt="AI agent observability"> -->
+    <!-- <img src="../assets/parseable-keystone.jpg" alt="Keystone canvas with branching investigation"> -->
   </div>
 
   <div class="spacer"></div>
@@ -207,9 +228,12 @@
   <div class="wrap">
     <div class="case-section fade-in">
       <h2>Outcome</h2>
-      <p>Replace with your outcomes. What shipped? What changed for users? Metrics if you have them, qualitative shift if you don't.</p>
-      <p>End with the thing you're most proud of, or the thing you'd do differently. Either is a good signal to a hiring manager.</p>
-      <a href="#" class="see-link">See product →</a>
+      <p>Shipped a significantly improved observability platform from rough MVP to first paying customer. Activation rate at launch reached 50%, with onboarding improvements tracking toward 80%. Translated the founding brief for Keystone into a complete, shippable interaction model — defining the canvas logic, validation flows, agent output presentation, and investigation-to-dashboard pathway. Rebuilt the design system with minimal disruption to the frontend team and established the foundational patterns — filtering, navigation, data inspection — that all subsequent features were built on.</p>
+
+      <h3>Reflection</h3>
+      <p>The most important thing I learned on this project is that constraints are a design input, not just a design limit. The data architecture — isolated datasets, no cross-dataset querying — could have been framed as a limitation. Instead it clarified the right mental model for users: you are investigating within a context, not surveying a global system. That shaped the entire information architecture.</p>
+      <p>If I were starting over, I would have pushed for earlier user validation on the Keystone canvas. We shipped something well-reasoned, but the branching canvas is a sufficiently novel pattern that more iteration cycles would have sharpened it. I would also have formalised the design system earlier — by feature twelve, the consistency work I'd done informally had become genuinely hard to maintain without documented rules.</p>
+      <a href="https://www.parseable.com" class="see-link" target="_blank" rel="noopener">See product →</a>
     </div>
 
     <div class="next-project fade-in">
