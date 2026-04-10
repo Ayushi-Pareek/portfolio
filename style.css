@@ -560,7 +560,6 @@ footer {
     flex-direction: column;
     align-items: flex-start;
   }
-}
 
 
 /* ===== FACADE STYLE (TARGETED TO YOUR FILE) ===== */
@@ -630,3 +629,6 @@ a:hover {
 .vl-border3 {
   display: none !important;
 }
+
+}
+
