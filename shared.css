@@ -118,6 +118,7 @@ html.dark nav.scrolled {
 .nav-links a:hover { color: var(--white); }
 
 /* ── THEME TOGGLE ── */
+/* ── THEME TOGGLE ── */
 .theme-toggle {
   background: none;
   border: 1px solid var(--border);
@@ -131,7 +132,7 @@ html.dark nav.scrolled {
   font-family: 'Inter', system-ui, sans-serif;
   font-weight: 400;
   color: var(--grey1);
-  transition: border-color 0.15s, color 0.15s, background 0.2s;
+  transition: border-color 0.15s, color 0.15s;
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -145,21 +146,20 @@ html.dark nav.scrolled {
   width: 14px;
   height: 14px;
   flex-shrink: 0;
-  display: block;
 }
 
-/* Light mode: show moon, hide sun */
-.icon-sun  { display: none;  }
-.icon-moon { display: block; }
+/* Default (light mode): show moon only */
+.theme-toggle .icon-sun  { display: none !important; }
+.theme-toggle .icon-moon { display: block !important; }
 
-/* Dark mode (JS): show sun, hide moon */
-html.dark .icon-sun  { display: block; }
-html.dark .icon-moon { display: none;  }
+/* Dark mode via JS class: show sun only */
+html.dark .theme-toggle .icon-sun  { display: block !important; }
+html.dark .theme-toggle .icon-moon { display: none !important; }
 
-/* Dark mode (system preference): show sun, hide moon */
+/* Dark mode via system preference (no JS class yet): show sun only */
 @media (prefers-color-scheme: dark) {
-  html:not(.light) .icon-sun  { display: block; }
-  html:not(.light) .icon-moon { display: none;  }
+  html:not(.light) .theme-toggle .icon-sun  { display: block !important; }
+  html:not(.light) .theme-toggle .icon-moon { display: none !important; }
 }
 
 /* ─────────────────────────────────────────
@@ -601,7 +601,7 @@ footer a:hover { color: var(--grey1); }
 }
 
 
-/* ── AMBIENT GRADIENT — nav and hero only ── */
+/* ── AMBIENT GRADIENT — hero section only ── */
 @keyframes ambient {
   0%   { background-color: #fafaf8; }
   16%  { background-color: #f2fce2; }
@@ -614,54 +614,68 @@ footer a:hover { color: var(--grey1); }
 
 @keyframes ambient-dark {
   0%   { background-color: #0d0d0d; }
-  16%  { background-color: #0d1208; }
+  16%  { background-color: #0d120a; }
   33%  { background-color: #080d0d; }
-  50%  { background-color: #09080d; }
-  66%  { background-color: #0d080c; }
-  83%  { background-color: #0d0a08; }
+  50%  { background-color: #09080f; }
+  66%  { background-color: #0f0809; }
+  83%  { background-color: #0f0d08; }
   100% { background-color: #0d0d0d; }
 }
 
-/* Animate only the top portion — hero and nav sit on html, content sits on body */
-html {
+/* html and body: always solid, no animation */
+html { background: var(--bg); }
+body { background: transparent; }
+
+/* Hero gets the animation */
+.hero {
   animation: ambient 24s ease-in-out infinite;
 }
 
-html.dark {
+html.dark .hero {
   animation: ambient-dark 24s ease-in-out infinite;
 }
 
 @media (prefers-color-scheme: dark) {
-  html:not(.light) {
+  html:not(.light) .hero {
     animation: ambient-dark 24s ease-in-out infinite;
   }
 }
 
-/* All content sections get solid bg so animation only shows through nav + hero gap */
-body {
+/* Nav is transparent so it picks up whatever is behind it (hero gradient at top of page) */
+nav {
   background: transparent;
 }
 
-.wrap,
+/* Once scrolled, nav gets solid bg again */
+nav.scrolled {
+  background: rgba(250, 250, 248, 0.92);
+}
+
+html.dark nav.scrolled {
+  background: rgba(13, 13, 13, 0.92);
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not(.light) nav.scrolled {
+    background: rgba(13, 13, 13, 0.92);
+  }
+}
+
+/* Everything else: solid bg so gradient doesn't bleed through */
 .section,
-.divider,
+.work-list,
 .email-strip,
 footer,
 .footer-strip,
 .case-section,
 .overview-grid,
+.breadcrumb,
 .next-project,
 .spacer,
-.spacer-sm {
-  position: relative;
+.spacer-sm,
+.full-img {
   background: var(--bg);
 }
-
-/* Full-bleed images break out of wrap so need explicit bg */
-.full-img {
-  position: relative;
-}
-
 
 /* ── TYPOGRAPHY── */
 
@@ -726,12 +740,28 @@ body {
 }
 
 /* Case study body */
+body {
+  background: transparent;
+  color: var(--white);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1.375rem;   /* 22px */
+  line-height: 2rem;     /* 32px */
+  font-weight: 400;
+  overflow-x: hidden;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* Body text in case studies and overview */
 .case-section p,
-.overview-body p {
-  font-size: 1.0625rem;
-  line-height: 1.8;
+.overview-body p,
+.hero-bio,
+.about-body,
+.about-body p,
+.contact-body {
+  font-size: 1.375rem;   /* 22px */
+  line-height: 2rem;     /* 32px */
+  font-weight: 400;
   color: var(--grey1);
-  font-weight: 300;
 }
 
 /* Overview h2 */
