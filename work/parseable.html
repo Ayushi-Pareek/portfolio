@@ -6,101 +6,44 @@
   <title>Parseable · Ayushi Pareek</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg:#0d0d0d; --surface:#161616; --border:#2a2a2a; --white:#ffffff; --grey1:#a0a0a0; --grey2:#5a5a5a; --max:780px; }
-    html { -webkit-font-smoothing: antialiased; font-size: 16px; }
-    body { background: var(--bg); color: var(--white); font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; }
-    a { color: inherit; text-decoration: none; }
-    img { display: block; width: 100%; }
-
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2.5rem; transition: background 0.3s, border-color 0.3s; border-bottom: 1px solid transparent; }
-    nav.scrolled { background: rgba(13,13,13,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom-color: var(--border); }
-    .nav-name { font-size: 0.9375rem; font-weight: 600; letter-spacing: -0.02em; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { font-size: 0.875rem; color: var(--grey1); transition: color 0.15s; }
-    .nav-links a:hover { color: var(--white); }
-
-    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
-    .fade-in.visible { opacity: 1; transform: none; }
-    .fade-in.d1 { transition-delay: 0.07s; }
-    .fade-in.d2 { transition-delay: 0.14s; }
-    .fade-in.d3 { transition-delay: 0.21s; }
-
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 2.5rem; }
-
-    .breadcrumb { padding-top: 8rem; display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; color: var(--grey2); margin-bottom: 1.5rem; }
-    .breadcrumb a { color: var(--grey2); transition: color 0.15s; }
-    .breadcrumb a:hover { color: var(--white); }
-
-    .page-title { font-size: clamp(3rem, 9vw, 6rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 3.5rem; }
-
-    .overview-grid { display: grid; grid-template-columns: 1fr 200px; gap: 4rem; padding-bottom: 3.5rem; border-bottom: 1px solid var(--border); margin-bottom: 3.5rem; }
-    .overview-body h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
-    .overview-body p { font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 1rem; }
-    .overview-body p:last-of-type { margin-bottom: 1.5rem; }
-    .see-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.9375rem; font-weight: 500; border-bottom: 1px solid var(--border); padding-bottom: 0.15rem; transition: border-color 0.15s; }
-    .see-link:hover { border-color: var(--white); }
-
-    .sidebar-block { margin-bottom: 2rem; }
-    .sidebar-block:last-child { margin-bottom: 0; }
-    .sidebar-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem; }
-    .sidebar-items { font-size: 0.9375rem; color: var(--grey1); font-weight: 300; line-height: 1.85; }
-
-    .full-img { width: 100%; background: var(--surface); }
-    .full-img.r169 { aspect-ratio: 16/9; }
-    .full-img.r43  { aspect-ratio: 4/3; }
-    .full-img img  { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    .case-section { margin-bottom: 3.5rem; }
-    .case-section h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 1.5rem; }
-    .case-section h3 { font-size: 1.0625rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 0.75rem; margin-top: 2rem; }
-    .case-section h3:first-child { margin-top: 0; }
-    .case-section p { font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 1rem; }
-    .case-section p:last-child { margin-bottom: 0; }
-
-    .spacer { height: 3.5rem; }
-    .spacer-sm { height: 2rem; }
-
-    .next-project { border-top: 1px solid var(--border); padding: 3.5rem 0 4rem; }
-    .next-label { font-size: 0.875rem; color: var(--grey2); margin-bottom: 0.6rem; }
-    .next-link { display: inline-flex; align-items: baseline; gap: 0.75rem; transition: opacity 0.15s; }
-    .next-link:hover { opacity: 0.7; }
-    .next-title { font-size: clamp(1.75rem, 5vw, 3.25rem); font-weight: 800; letter-spacing: -0.04em; }
-    .next-arrow { font-size: clamp(1.75rem, 5vw, 3.25rem); font-weight: 300; color: var(--grey2); }
-
-    .footer-strip { background: var(--surface); border-top: 1px solid var(--border); padding: 3rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
-    .footer-bio { font-size: 1rem; color: var(--grey1); font-weight: 300; }
-    .footer-bio strong { color: var(--white); font-weight: 600; }
-    .email-cta { font-size: 0.9375rem; font-weight: 600; border-bottom: 1.5px solid var(--white); padding-bottom: 0.1rem; white-space: nowrap; transition: opacity 0.15s; }
-    .email-cta:hover { opacity: 0.6; }
-
-    footer { padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
-    footer span { font-size: 0.8125rem; color: var(--grey2); }
-
-    @media (max-width: 680px) {
-      nav { padding: 1.1rem 1.5rem; }
-      .wrap { padding: 0 1.5rem; }
-      .nav-links { gap: 1.25rem; }
-      .overview-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .footer-strip { padding: 2rem 1.5rem; }
-      footer { padding: 1.25rem 1.5rem; flex-direction: column; }
-    }
-  </style>
+  <link rel="stylesheet" href="../shared.css">
+  <!-- Theme init: runs before paint to prevent flash of wrong theme -->
+  <script>
+    (function() {
+      var s = localStorage.getItem('theme');
+      var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.classList.add(s === 'dark' || (!s && d) ? 'dark' : 'light');
+    })();
+  </script>
 </head>
 
-
-  
 <body>
 
   <nav id="nav">
     <a href="../index.html" class="nav-name">Ayushi Pareek</a>
-    <ul class="nav-links">
-      <li><a href="../index.html#work">Work</a></li>
-      <li><a href="../index.html#about">About</a></li>
-      <li><a href="../index.html#contact">Contact</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="../index.html#work">Work</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.25"/>
+          <line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+          <line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+          <line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+          <line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+          <line x1="2.93" y1="2.93" x2="4.34" y2="4.34" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+          <line x1="11.66" y1="11.66" x2="13.07" y2="13.07" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+          <line x1="2.93" y1="13.07" x2="4.34" y2="11.66" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+          <line x1="11.66" y1="4.34" x2="13.07" y2="2.93" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13.5 10A6 6 0 0 1 6 2.5a6 6 0 1 0 7.5 7.5z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
   </nav>
 
   <div class="wrap">
@@ -230,37 +173,36 @@
 
   <div class="wrap">
     <div class="case-section fade-in">
-     <div class="case-section fade-in">
-  <h2>Outcome</h2>
+      <h2>Outcome</h2>
 
-  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 2.5rem;">
-    <div style="background: var(--surface); padding: 1.75rem 1.5rem;">
-      <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem;">Activation at launch</p>
-      <p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 0.5rem;">50%</p>
-      <p style="font-size: 0.875rem; color: var(--grey2); font-weight: 300; margin: 0;">of signups connected real data</p>
+      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 2.5rem;">
+        <div style="background: var(--surface); padding: 1.75rem 1.5rem;">
+          <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem;">Activation at launch</p>
+          <p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 0.5rem;">50%</p>
+          <p style="font-size: 0.875rem; color: var(--grey2); font-weight: 300; margin: 0;">of signups connected real data</p>
+        </div>
+        <div style="background: var(--surface); padding: 1.75rem 1.5rem;">
+          <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem;">Target after improvements</p>
+          <p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 0.5rem;">80%</p>
+          <p style="font-size: 0.875rem; color: var(--grey2); font-weight: 300; margin: 0;">trajectory before engagement ended</p>
+        </div>
+        <div style="background: var(--surface); padding: 1.75rem 1.5rem;">
+          <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem;">Features shipped</p>
+          <p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 0.5rem;">18+</p>
+          <p style="font-size: 0.875rem; color: var(--grey2); font-weight: 300; margin: 0;">sole designer, rough MVP to paying customer</p>
+        </div>
+      </div>
+
+      <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 2.5rem;">The design system was rebuilt without breaking the frontend team's existing work. The foundational patterns — filtering, navigation, data inspection — held up across every feature that followed. Keystone went from a vague founding idea to a shippable interaction model with defined canvas logic, validation flows, and a path from investigation to dashboard.</p>
+
+      <div style="border-left: 1px solid var(--border); padding-left: 1.5rem; margin-bottom: 2.5rem;">
+        <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 1rem;">If I were starting over</p>
+        <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 1rem;">I would formalise the design system before feature ten, not after. And I would put the Keystone canvas in front of real users earlier — it was well-reasoned, but a pattern this novel earns its confidence through testing, not just logic.</p>
+        <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin: 0;">The constraint I'd keep: designing within the data architecture rather than against it. Isolated datasets felt like a limitation until they clarified the right mental model — you investigate within a context. That shaped everything.</p>
+      </div>
+
+      <a href="https://www.parseable.com" class="see-link" target="_blank" rel="noopener">See product →</a>
     </div>
-    <div style="background: var(--surface); padding: 1.75rem 1.5rem;">
-      <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem;">Target after improvements</p>
-      <p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 0.5rem;">80%</p>
-      <p style="font-size: 0.875rem; color: var(--grey2); font-weight: 300; margin: 0;">trajectory before engagement ended</p>
-    </div>
-    <div style="background: var(--surface); padding: 1.75rem 1.5rem;">
-      <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem;">Features shipped</p>
-      <p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 0.5rem;">18+</p>
-      <p style="font-size: 0.875rem; color: var(--grey2); font-weight: 300; margin: 0;">sole designer, rough MVP to paying customer</p>
-    </div>
-  </div>
-
-  <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 2.5rem;">The design system was rebuilt without breaking the frontend team's existing work. The foundational patterns — filtering, navigation, data inspection — held up across every feature that followed. Keystone went from a vague founding idea to a shippable interaction model with defined canvas logic, validation flows, and a path from investigation to dashboard.</p>
-
-  <div style="border-left: 1px solid var(--border); padding-left: 1.5rem; margin-bottom: 2.5rem;">
-    <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 1rem;">If I were starting over</p>
-    <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 1rem;">I would formalise the design system before feature ten, not after. And I would put the Keystone canvas in front of real users earlier — it was well-reasoned, but a pattern this novel earns its confidence through testing, not just logic.</p>
-    <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin: 0;">The constraint I'd keep: designing within the data architecture rather than against it. Isolated datasets felt like a limitation until they clarified the right mental model — you investigate within a context. That shaped everything.</p>
-  </div>
-
-  <a href="https://www.parseable.com" class="see-link" target="_blank" rel="noopener">See product →</a>
-</div>
 
     <div class="next-project fade-in">
       <p class="next-label">Next project</p>
@@ -284,31 +226,24 @@
   <script>
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
     }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+
     document.querySelectorAll('.fade-in').forEach(el => {
       if (el.getBoundingClientRect().top < window.innerHeight) { el.classList.add('visible'); }
       else { obs.observe(el); }
     });
+
+    document.getElementById('theme-toggle').addEventListener('click', function() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains('dark');
+      html.classList.remove('dark', 'light');
+      html.classList.add(isDark ? 'light' : 'dark');
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+    });
   </script>
 
-    <script>
-  (function() {
-    const stored = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const isDark = stored === 'dark' || (!stored && prefersDark);
-    if (isDark) document.documentElement.classList.add('dark');
-    else document.documentElement.classList.add('light');
-  })();
-
-  document.getElementById('theme-toggle').addEventListener('click', function() {
-    const html = document.documentElement;
-    const isDark = html.classList.contains('dark');
-    html.classList.remove('dark', 'light');
-    html.classList.add(isDark ? 'light' : 'dark');
-    localStorage.setItem('theme', isDark ? 'light' : 'dark');
-  });
-</script>
 </body>
 </html>
