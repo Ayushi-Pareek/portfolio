@@ -1,7 +1,4 @@
-/* ═══════════════════════════════════════════════════
-   shared.css — Ayushi Pareek Portfolio
-   Single source of truth. All pages link to this.
-   ═══════════════════════════════════════════════════ */
+
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -601,4 +598,66 @@ footer a:hover { color: var(--grey1); }
   /* Work pages */
   .overview-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .footer-strip { padding: 2rem 1.5rem; }
+}
+
+
+/* ── AMBIENT GRADIENT — nav and hero only ── */
+@keyframes ambient {
+  0%   { background-color: #fafaf8; }
+  16%  { background-color: #f2fce2; }
+  33%  { background-color: #eafbfc; }
+  50%  { background-color: #eff0fc; }
+  66%  { background-color: #fcedf6; }
+  83%  { background-color: #fcf2ed; }
+  100% { background-color: #fafaf8; }
+}
+
+@keyframes ambient-dark {
+  0%   { background-color: #0d0d0d; }
+  16%  { background-color: #0d1208; }
+  33%  { background-color: #080d0d; }
+  50%  { background-color: #09080d; }
+  66%  { background-color: #0d080c; }
+  83%  { background-color: #0d0a08; }
+  100% { background-color: #0d0d0d; }
+}
+
+/* Animate only the top portion — hero and nav sit on html, content sits on body */
+html {
+  animation: ambient 24s ease-in-out infinite;
+}
+
+html.dark {
+  animation: ambient-dark 24s ease-in-out infinite;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not(.light) {
+    animation: ambient-dark 24s ease-in-out infinite;
+  }
+}
+
+/* All content sections get solid bg so animation only shows through nav + hero gap */
+body {
+  background: transparent;
+}
+
+.wrap,
+.section,
+.divider,
+.email-strip,
+footer,
+.footer-strip,
+.case-section,
+.overview-grid,
+.next-project,
+.spacer,
+.spacer-sm {
+  position: relative;
+  background: var(--bg);
+}
+
+/* Full-bleed images break out of wrap so need explicit bg */
+.full-img {
+  position: relative;
 }
