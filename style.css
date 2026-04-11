@@ -6,18 +6,6 @@
   padding: 0;
 }
 
-/* :root {
-  --ink: #111111;
-  --ink-mid: #555555;
-  --ink-faint: #999999;
-  --rule: #e8e8e8;
-  --bg: #ffffff;
-  --max: 680px;
-  --font-serif: 'Instrument Serif', Georgia, serif;
-  --font-sans: 'DM Sans', system-ui, sans-serif;
-}
-*/
-
 :root {
   --bg: #fafaf8;
   --surface: #f0f0ee;
@@ -26,8 +14,47 @@
   --grey1: #555555;
   --grey2: #999999;
   --max: 780px;
+
+  /* fixing the undefined vars used throughout */
+  --ink: #111111;
+  --ink-mid: #555555;
+  --ink-faint: #999999;
+  --rule: #e8e8e4;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'DM Sans', system-ui, sans-serif;
 }
 
+/* dark mode via class (set by toggle) */
+html.dark {
+  --bg: #0d0d0d;
+  --surface: #161616;
+  --border: #2a2a2a;
+  --white: #ffffff;
+  --grey1: #a0a0a0;
+  --grey2: #5a5a5a;
+
+  --ink: #f0f0ee;
+  --ink-mid: #a0a0a0;
+  --ink-faint: #5a5a5a;
+  --rule: #2a2a2a;
+}
+
+/* system dark mode default (before JS runs) */
+@media (prefers-color-scheme: dark) {
+  html:not(.light) {
+    --bg: #0d0d0d;
+    --surface: #161616;
+    --border: #2a2a2a;
+    --white: #ffffff;
+    --grey1: #a0a0a0;
+    --grey2: #5a5a5a;
+
+    --ink: #f0f0ee;
+    --ink-mid: #a0a0a0;
+    --ink-faint: #5a5a5a;
+    --rule: #2a2a2a;
+  }
+}
 html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
@@ -578,6 +605,47 @@ footer {
   .nav-links {
     gap: 1.25rem;
   }
+
+  /* ── THEME TOGGLE ── */
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 2rem;
+  padding: 0.3rem 0.65rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  color: var(--ink-mid);
+  transition: border-color 0.15s, color 0.15s;
+  margin-left: 1.5rem;
+  white-space: nowrap;
+}
+
+.theme-toggle:hover {
+  border-color: var(--ink-mid);
+  color: var(--ink);
+}
+
+.theme-toggle .toggle-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+
+html.dark .theme-toggle .icon-sun { display: block; }
+html.dark .theme-toggle .icon-moon { display: none; }
+
+@media (prefers-color-scheme: dark) {
+  html:not(.light) .theme-toggle .icon-sun { display: block; }
+  html:not(.light) .theme-toggle .icon-moon { display: none; }
+}
 
   footer {
     padding: 1.5rem 1.25rem;
