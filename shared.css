@@ -495,7 +495,7 @@ footer a:hover { color: var(--grey1); }
 }
 
 .overview-body h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
-.overview-body p { font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 1rem; }
+.overview-body p { font-size: 1.0625rem; line-height: 1.75; letter-spacing: -0.02em; color: var(--grey1); font-weight: 300; margin-bottom: 1rem; }
 .overview-body p:last-of-type { margin-bottom: 1.5rem; }
 
 .see-link {
@@ -515,7 +515,7 @@ footer a:hover { color: var(--grey1); }
 .sidebar-block:last-child { margin-bottom: 0; }
 
 .sidebar-label {
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -539,7 +539,7 @@ footer a:hover { color: var(--grey1); }
 .case-section h3 { font-size: 1.0625rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 0.75rem; margin-top: 2rem; }
 .case-section h3:first-child { margin-top: 0; }
 
-.case-section p { font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 1rem; }
+.case-section p { font-size: 1.0625rem; line-height: 1.75; letter-spacing: -0.02em; color: var(--grey1); font-weight: 300; margin-bottom: 1rem; }
 .case-section p:last-child { margin-bottom: 0; }
 
 /* Spacers */
@@ -683,6 +683,7 @@ footer,
 body {
   font-size: 1.0625rem; /* 17px */
   line-height: 1.75;
+  letter-spacing: -0.02em;
 }
 
 /* Hero — smaller, editorial */
@@ -699,6 +700,7 @@ body {
   line-height: 1.75;
   font-weight: 300;
   max-width: 520px;
+  letter-spacing: -0.02em;
 }
 
 /* Page title on work pages */
@@ -746,6 +748,7 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 1.375rem;   /* 22px */
   line-height: 2rem;     /* 32px */
+  letter-spacing: -0.02em;
   font-weight: 400;
   overflow-x: hidden;
   transition: background 0.2s ease, color 0.2s ease;
@@ -759,9 +762,10 @@ body {
 .about-body p,
 .contact-body {
   font-size: 1.375rem;   /* 22px */
-  line-height: 2rem;     /* 32px */
+  line-height: 2.1rem;     /* 32px */
   font-weight: 400;
   color: var(--grey1);
+  letter-spacing: -0.02em;
 }
 
 /* Overview h2 */
