@@ -90,24 +90,6 @@
   </style>
 </head>
 
-  <script>
-  (function() {
-    const stored = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const isDark = stored === 'dark' || (!stored && prefersDark);
-    if (isDark) document.documentElement.classList.add('dark');
-    else document.documentElement.classList.add('light');
-  })();
-
-  document.getElementById('theme-toggle').addEventListener('click', function() {
-    const html = document.documentElement;
-    const isDark = html.classList.contains('dark');
-    html.classList.remove('dark', 'light');
-    html.classList.add(isDark ? 'light' : 'dark');
-    localStorage.setItem('theme', isDark ? 'light' : 'dark');
-  });
-</script>
-  
 <body>
 
   <nav id="nav">
@@ -277,5 +259,23 @@
       else { obs.observe(el); }
     });
   </script>
+
+  <script>
+  (function() {
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = stored === 'dark' || (!stored && prefersDark);
+    if (isDark) document.documentElement.classList.add('dark');
+    else document.documentElement.classList.add('light');
+  })();
+
+  document.getElementById('theme-toggle').addEventListener('click', function() {
+    const html = document.documentElement;
+    const isDark = html.classList.contains('dark');
+    html.classList.remove('dark', 'light');
+    html.classList.add(isDark ? 'light' : 'dark');
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  });
+</script>
 </body>
 </html>
