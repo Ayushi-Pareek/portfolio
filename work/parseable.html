@@ -7,47 +7,35 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../shared.css">
-  <!-- Theme init: runs before paint to prevent flash of wrong theme -->
-  <script>
-    (function() {
-      var s = localStorage.getItem('theme');
-      var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.classList.add(s === 'dark' || (!s && d) ? 'dark' : 'light');
-    })();
-  </script>
+  
 </head>
 
-<body>
+<body class="work-page">
 
   <nav id="nav">
-    <a href="../index.html" class="nav-name">Ayushi Pareek</a>
-    <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="../index.html#work">Work</a></li>
-        <li><a href="../index.html#about">About</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
-      </ul>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-        <svg class="icon-sun" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.25"/>
-          <line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="2.93" y1="2.93" x2="4.34" y2="4.34" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="11.66" y1="11.66" x2="13.07" y2="13.07" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="2.93" y1="13.07" x2="4.34" y2="11.66" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="11.66" y1="4.34" x2="13.07" y2="2.93" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-        </svg>
-        <svg class="icon-moon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M13.5 10A6 6 0 0 1 6 2.5a6 6 0 1 0 7.5 7.5z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
+    <div class="container">
+      <a href="../index.html" class="nav-name">
+        <img src="../assets/logo-mark.svg" alt="Ayushi Pareek" style="height: 2rem;">
+      </a>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="../index.html#work" class="text-nav">Work</a></li>
+          <li><a href="../index.html#about" class="text-nav">About</a></li>
+          <li><a href="../index.html#contact" class="text-nav">Contact</a></li>
+        </ul>
+        
+      </div>
     </div>
   </nav>
 
+  <div class="hero-section">
+    <div class="wrap">
+      <h1 class="page-title fade-in d1 text-hero">Parseable</h1>
+    </div>
+  </div>
+
   <div class="wrap">
-    <div class="breadcrumb fade-in">
+    <div class="breadcrumb fade-in d2 text-breadcrumb">
       <a href="../index.html">Home</a>
       <span>→</span>
       <a href="../index.html#work">Work</a>
@@ -55,36 +43,36 @@
       <span>Parseable</span>
     </div>
 
-    <h1 class="page-title fade-in d1">Parseable</h1>
-
     <div class="overview-grid fade-in d2">
       <div class="overview-body">
-        <h2>Overview</h2>
-        <p>Parseable is a high-compression log storage and observability platform built as a cost-efficient alternative to tools like Datadog. I joined as the sole product designer when the product was early and rough — a handful of base log, metric, and trace pages with an existing design system I largely rebuilt, few established patterns worth keeping, and significant UX debt.</p>
-        <p>I rebuilt the foundation while expanding the product across 18+ features, working directly with the founders and engineering team on everything from core querying workflows to AI-assisted investigation — all while minimising disruption to the frontend team already building against existing components.</p>
-        <a href="https://www.parseable.com" class="see-link" target="_blank" rel="noopener">See product →</a>
+        <h2 class="text-h2">Overview</h2>
+        <p class="text-body">Parseable is a high-compression log storage and observability platform built as a cost-efficient alternative to tools like Datadog. I joined as the sole product designer when the product was early and rough — a handful of base log, metric, and trace pages with an existing design system I largely rebuilt, few established patterns worth keeping, and significant UX debt.</p>
+        <p class="text-body">I rebuilt the foundation while expanding the product across 18+ features, working directly with the founders and engineering team on everything from core querying workflows to AI-assisted investigation — all while minimising disruption to the frontend team already building against existing components.</p>
+<a href="https://www.parseable.com" class="btn-primary text-button" target="_blank" rel="noopener">See product →</a>
       </div>
       <div>
-        <div class="sidebar-block">
-          <p class="sidebar-label">My contribution</p>
-          <div class="sidebar-items">
-            End-to-end product design<br>
-            Information architecture<br>
-            Design system rebuild<br>
-            AI investigation UX
+        <div class="sidebar-grid">
+          <div class="sidebar-block">
+            <p class="sidebar-label text-sidebar-label">My contribution</p>
+            <div class="sidebar-items text-sidebar-value">
+              End-to-end product design<br>
+              Information architecture<br>
+              Design system rebuild<br>
+              AI investigation UX
+            </div>
           </div>
-        </div>
-        <div class="sidebar-block">
-          <p class="sidebar-label">The team</p>
-          <div class="sidebar-items">
-            1 × product designer<br>
-            4 × engineers<br>
-            1 × founder
+          <div class="sidebar-block">
+            <p class="sidebar-label text-sidebar-label">The team</p>
+            <div class="sidebar-items text-sidebar-value">
+              1 × product designer<br>
+              4 × engineers<br>
+              1 × founder
+            </div>
           </div>
-        </div>
-        <div class="sidebar-block">
-          <p class="sidebar-label">Year</p>
-          <div class="sidebar-items">2025 – 2026</div>
+          <div class="sidebar-block">
+            <p class="sidebar-label text-sidebar-label">Year</p>
+            <div class="sidebar-items text-sidebar-value">2025 – 2026</div>
+          </div>
         </div>
       </div>
     </div>
@@ -99,10 +87,10 @@
 
   <div class="wrap">
     <div class="case-section fade-in">
-      <h2>The problem worth designing for</h2>
-      <h3>It's not a features problem</h3>
-      <p>Developer observability tools have a usability problem that isn't about features. Datadog has every feature. The problem is that debugging under pressure is non-linear — engineers hold multiple hypotheses simultaneously, pivot between them, and need to move fast across related data. Most tools are built around predefined dashboards and sequential query flows that break this pattern. You have to know what you're looking for before you can look.</p>
-      <p>The design challenge wasn't "make this cheaper than Datadog." It was: design a system where engineers can investigate quickly, without friction, without being forced into workflows that don't match how they actually think.</p>
+      <h2 class="text-section-label">The problem worth designing for</h2>
+      <h3 class="text-h3">It's not a features problem</h3>
+      <p class="text-body">Developer observability tools have a usability problem that isn't about features. Datadog has every feature. The problem is that debugging under pressure is non-linear — engineers hold multiple hypotheses simultaneously, pivot between them, and need to move fast across related data. Most tools are built around predefined dashboards and sequential query flows that break this pattern. You have to know what you're looking for before you can look.</p>
+      <p class="text-body">The design challenge wasn't "make this cheaper than Datadog." It was: design a system where engineers can investigate quickly, without friction, without being forced into workflows that don't match how they actually think.</p>
     </div>
   </div>
 
@@ -110,22 +98,23 @@
 
   <div class="wrap">
     <div class="case-section fade-in">
-      <h2>Filtering: the thing nobody notices until it's gone</h2>
-      <h3>Every round trip has a cost</h3>
-      <p>The filtering system runs across every surface in the platform — logs, traces, metrics, dashboards. On paper that sounds like a technical decision. In practice, it's the thing that determines whether debugging feels fast or exhausting.</p>
-      <p>Most observability tools make filtering a deliberate act. You go somewhere, type something, come back. Every round trip adds cognitive cost when you're already context-switching under pressure.</p>
+      <h2 class="text-section-label">Filtering: the thing nobody notices until it's gone</h2>
+      <h3 class="text-h3">Every round trip has a cost</h3>
+      <p class="text-body">The filtering system runs across every surface in the platform — logs, traces, metrics, dashboards. On paper that sounds like a technical decision. In practice, it's the thing that determines whether debugging feels fast or exhausting.</p>
+      <p class="text-body">Most observability tools make filtering a deliberate act. You go somewhere, type something, come back. Every round trip adds cognitive cost when you're already context-switching under pressure.</p>
 
-      <h3>Filtering always where the user is</h3>
-      <p>I designed the system so the filter is always at hand. The top five field values are surfaced on click — no typing required for the common case. Any field in a log, trace, or metric table can be filtered directly from the table row, with include or exclude as a one-click option. Filters persist across related views and can be saved as named views for repeated workflows. A sidebar with field categories keeps the full filter space discoverable without overwhelming the interface.</p>
-      <p>None of these are individually remarkable. Together they compound into a noticeably different pace of investigation — one where you're never hunting for the filter UI, never retyping something you already specified, never losing your state because you navigated away.</p>
+      <h3 class="text-h3">Filtering always where the user is</h3>
+      <p class="text-body">I designed the system so the filter is always at hand. The top five field values are surfaced on click — no typing required for the common case. Any field in a log, trace, or metric table can be filtered directly from the table row, with include or exclude as a one-click option. Filters persist across related views and can be saved as named views for repeated workflows. A sidebar with field categories keeps the full filter space discoverable without overwhelming the interface.</p>
+      <p class="text-body">None of these are individually remarkable. Together they compound into a noticeably different pace of investigation — one where you're never hunting for the filter UI, never retyping something you already specified, never losing your state because you navigated away.</p>
     </div>
   </div>
 
+  <div class="spacer"></div>
+  <div class="spacer"></div>
+
   <div class="full-img r169 fade-in" style="background:#111620;">
     <!-- <img src="../assets/parseable-filtering.jpg" alt="Filtering system"> -->
-  </div>
-  <div class="spacer-sm"></div>
-  <div class="full-img r43 fade-in" style="background:#0f1a15;">
+  </div><div class="full-img r43 fade-in" style="background:#0f1a15;">
     <!-- <img src="../assets/parseable-logs.jpg" alt="Log view with inline filters"> -->
   </div>
 
@@ -133,15 +122,18 @@
 
   <div class="wrap">
     <div class="case-section fade-in">
-      <h2>Onboarding: activation as a design metric</h2>
-      <h3>The cold-start problem</h3>
-      <p>Observability tools have a cold-start problem. The product only shows its value when your data is in it, but connecting your data requires setup, which requires confidence the tool is worth setting up. Most tools resolve this badly — either they skip straight to an empty state, or they front-load so much configuration that users abandon before seeing anything.</p>
+      <h2 class="text-section-label">Onboarding: activation as a design metric</h2>
+      <h3 class="text-h3">The cold-start problem</h3>
+      <p class="text-body">Observability tools have a cold-start problem. The product only shows its value when your data is in it, but connecting your data requires setup, which requires confidence the tool is worth setting up. Most tools resolve this badly — either they skip straight to an empty state, or they front-load so much configuration that users abandon before seeing anything.</p>
 
-      <h3>Two paths, one screen</h3>
-      <p>I reduced the entry to two paths from a single screen: connect your own data, or explore with demo data immediately. No multi-step wizard, no required configuration before the platform opens. Users who weren't ready to commit to setup could see the full product working within seconds.</p>
-      <p>The result: 50% of users who signed up went on to connect their own data and begin real exploration. Subsequent onboarding improvements were on track toward an 80% target before the engagement ended. For a developer tool where meaningful activation requires actual setup effort, 50% is a strong baseline — and the direction of improvement validated the approach.</p>
+      <h3 class="text-h3">Two paths, one screen</h3>
+      <p class="text-body">I reduced the entry to two paths from a single screen: connect your own data, or explore with demo data immediately. No multi-step wizard, no required configuration before the platform opens. Users who weren't ready to commit to setup could see the full product working within seconds.</p>
+      <p class="text-body">The result: 50% of users who signed up went on to connect their own data and begin real exploration. Subsequent onboarding improvements were on track toward an 80% target before the engagement ended. For a developer tool where meaningful activation requires actual setup effort, 50% is a strong baseline — and the direction of improvement validated the approach.</p>
     </div>
   </div>
+
+  <div class="spacer"></div>
+  <div class="spacer"></div>
 
   <div class="full-img r169 fade-in" style="background:#151015;">
     <!-- <img src="../assets/parseable-onboarding.jpg" alt="Onboarding two-path screen"> -->
@@ -151,19 +143,22 @@
 
   <div class="wrap">
     <div class="case-section fade-in">
-      <h2>Keystone: designing for how debugging actually happens</h2>
-      <h3>A direction, not a design</h3>
-      <p>The founder's instinct from the start was that chat wouldn't work — debugging isn't linear, and a canvas that supports branching exploration would match how engineers actually investigate. That framing was right. My job was to figure out what that actually meant as a designed product.</p>
-      <p>Debugging an incident means running parallel threads simultaneously: why did latency spike, which service was affected, what changed in that window, is this correlated with a deployment. Chat forces you to serialise that process. Earlier threads disappear as the conversation moves forward, and you lose the spatial relationship between related findings. The canvas had to solve for that.</p>
+      <h2 class="text-section-label">Keystone: designing for how debugging actually happens</h2>
+      <h3 class="text-h3">A direction, not a design</h3>
+      <p class="text-body">The founder's instinct from the start was that chat wouldn't work — debugging isn't linear, and a canvas that supports branching exploration would match how engineers actually investigate. That framing was right. My job was to figure out what that actually meant as a designed product.</p>
+      <p class="text-body">Debugging an incident means running parallel threads simultaneously: why did latency spike, which service was affected, what changed in that window, is this correlated with a deployment. Chat forces you to serialise that process. Earlier threads disappear as the conversation moves forward, and you lose the spatial relationship between related findings. The canvas had to solve for that.</p>
 
-      <h3>What I designed</h3>
-      <p>Each question produces an answer node. From any answer, the user can branch into a new question — following a different hypothesis without abandoning the thread they were on. Multiple branches can exist simultaneously, spatially arranged as the investigation develops. Visualisations attach directly to the nodes that generated them, so a chart stays connected to the question that produced it rather than floating in a scroll.</p>
-      <p>The specific interaction decisions I owned: how dataset and time range selection is validated before queries run, so the system confirms its interpretation before acting; how the SQL agent's output is presented without exposing raw query complexity to users who don't need it; how suggested follow-up questions are surfaced to guide less experienced users without constraining advanced ones; and how findings can be pinned to dashboards directly from the canvas without breaking the investigation flow.</p>
+      <h3 class="text-h3">What I designed</h3>
+      <p class="text-body">Each question produces an answer node. From any answer, the user can branch into a new question — following a different hypothesis without abandoning the thread they were on. Multiple branches can exist simultaneously, spatially arranged as the investigation develops. Visualisations attach directly to the nodes that generated them, so a chart stays connected to the question that produced it rather than floating in a scroll.</p>
+      <p class="text-body">The specific interaction decisions I owned: how dataset and time range selection is validated before queries run, so the system confirms its interpretation before acting; how the SQL agent's output is presented without exposing raw query complexity to users who don't need it; how suggested follow-up questions are surfaced to guide less experienced users without constraining advanced ones; and how findings can be pinned to dashboards directly from the canvas without breaking the investigation flow.</p>
 
-      <h3>The design argument</h3>
-      <p>The interface should match the mental model, not force the mental model to match the interface. Engineers investigating incidents think spatially and in parallel. The canvas lets them.</p>
+      <h3 class="text-h3">The design argument</h3>
+      <p class="text-body">The interface should match the mental model, not force the mental model to match the interface. Engineers investigating incidents think spatially and in parallel. The canvas lets them.</p>
     </div>
   </div>
+
+  <div class="spacer"></div>
+  <div class="spacer"></div>
 
   <div class="full-img r169 fade-in" style="background:#101520;">
     <!-- <img src="../assets/parseable-keystone.jpg" alt="Keystone canvas with branching investigation"> -->
@@ -173,59 +168,119 @@
 
   <div class="wrap">
     <div class="case-section fade-in">
-      <h2>Outcome</h2>
+      <h2 class="text-section-label">Outcome</h2>
 
-      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 2.5rem;">
-        <div style="background: var(--surface); padding: 1.75rem 1.5rem;">
-          <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem;">Activation at launch</p>
-          <p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 0.5rem;">50%</p>
-          <p style="font-size: 0.875rem; color: var(--grey2); font-weight: 300; margin: 0;">of signups connected real data</p>
+      <div class="outcome-grid outcome-grid-3col">
+        <div class="outcome-card">
+          <p class="outcome-label text-outcome-label">Activation at launch</p>
+          <div class="outcome-stat-block">
+            <p class="outcome-stat text-outcome-stat">50%</p>
+            <p class="outcome-desc text-outcome-desc">of signups connected real data</p>
+          </div>
         </div>
-        <div style="background: var(--surface); padding: 1.75rem 1.5rem;">
-          <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem;">Target after improvements</p>
-          <p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 0.5rem;">80%</p>
-          <p style="font-size: 0.875rem; color: var(--grey2); font-weight: 300; margin: 0;">trajectory before engagement ended</p>
+        <div class="outcome-card">
+          <p class="outcome-label text-outcome-label">After improvement</p>
+          <div class="outcome-stat-block">
+            <p class="outcome-stat text-outcome-stat">80%</p>
+            <p class="outcome-desc text-outcome-desc">trajectory before engagement ended</p>
+          </div>
         </div>
-        <div style="background: var(--surface); padding: 1.75rem 1.5rem;">
-          <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem;">Features shipped</p>
-          <p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 0.5rem;">18+</p>
-          <p style="font-size: 0.875rem; color: var(--grey2); font-weight: 300; margin: 0;">sole designer, rough MVP to paying customer</p>
+        <div class="outcome-card">
+          <p class="outcome-label text-outcome-label">Sole designer</p>
+          <div class="outcome-stat-block">
+            <p class="outcome-stat text-outcome-stat">18+</p>
+            <p class="outcome-desc text-outcome-desc">features shipped, rough MVP to paying customer</p>
+          </div>
         </div>
       </div>
 
-      <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 2.5rem;">The design system was rebuilt without breaking the frontend team's existing work. The foundational patterns — filtering, navigation, data inspection — held up across every feature that followed. Keystone went from a vague founding idea to a shippable interaction model with defined canvas logic, validation flows, and a path from investigation to dashboard.</p>
+      <p class="outcome-summary text-body">The design system was rebuilt without breaking the frontend team's existing work. The foundational patterns — filtering, navigation, data inspection — held up across every feature that followed. Keystone went from a vague founding idea to a shippable interaction model with defined canvas logic, validation flows, and a path from investigation to dashboard.</p>
 
-      <div style="border-left: 1px solid var(--border); padding-left: 1.5rem; margin-bottom: 2.5rem;">
-        <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 1rem;">If I were starting over</p>
-        <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 1rem;">I would formalise the design system before feature ten, not after. And I would put the Keystone canvas in front of real users earlier — it was well-reasoned, but a pattern this novel earns its confidence through testing, not just logic.</p>
-        <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin: 0;">The constraint I'd keep: designing within the data architecture rather than against it. Isolated datasets felt like a limitation until they clarified the right mental model — you investigate within a context. That shaped everything.</p>
+      <div class="reflection-block">
+        <p class="text-reflection-title">If I were starting over</p>
+        <p class="text-body">I would formalise the design system before feature ten, not after. And I would put the Keystone canvas in front of real users earlier — it was well-reasoned, but a pattern this novel earns its confidence through testing, not just logic.</p>
+        <p class="text-body">The constraint I'd keep: designing within the data architecture rather than against it. Isolated datasets felt like a limitation until they clarified the right mental model — you investigate within a context. That shaped everything.</p>
       </div>
 
-      <a href="https://www.parseable.com" class="see-link" target="_blank" rel="noopener">See product →</a>
+      <a href="https://www.parseable.com" class="btn-primary text-button" target="_blank" rel="noopener">See product →</a>
     </div>
 
-    <div class="next-project fade-in">
-      <p class="next-label">Next project</p>
+    <div class="next-project fade-in text-next-project">
+      <p class="next-label text-next-label">Next project</p>
       <a href="deepsource.html" class="next-link">
-        <span class="next-title">DeepSource</span>
-        <span class="next-arrow">→</span>
+        <span class="next-title text-next-project">DeepSource</span>
+        <span class="next-arrow text-next-project">→</span>
       </a>
     </div>
   </div>
 
   <div class="footer-strip">
-    <p class="footer-bio"><strong>Ayushi Pareek</strong> — senior product designer for developer tools, based in Bengaluru.</p>
-    <a href="mailto:ayushipareek@gmail.com" class="email-cta">Email me →</a>
+    <div class="footer-strip-inner">
+      <p class="footer-bio"><strong>Ayushi Pareek</strong> — senior product designer for developer tools, based in Bengaluru.</p>
+      <a href="mailto:ayushipareek1@gmail.com" class="email-cta text-button">Email me →</a>
+    </div>
   </div>
 
   <footer>
-    <span>Ayushi Pareek</span>
-    <span>©2025</span>
+    <div class="container">
+      <span class="text-footer">Ayushi Pareek</span>
+      <span class="text-footer">©2025</span>
+    </div>
   </footer>
 
   <script>
     const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+    const heroSection = document.querySelector('.hero-section');
+    let ambientStartTime = Date.now();
+    const ambientDuration = 24000;
+
+    const lightGradient = [
+      { time: 0, color: '#e9f6f1' },
+      { time: 0.16, color: '#eef4df' },
+      { time: 0.33, color: '#eff6ed' },
+      { time: 0.5, color: '#eaf4ff' },
+      { time: 0.66, color: '#f7e9ee' },
+      { time: 0.83, color: '#f9e6eb' },
+      { time: 1, color: '#e9f6f1' }
+    ];
+
+    function getGradientColor(progress) {
+      const colors = lightGradient;
+      for (let i = 0; i < colors.length - 1; i++) {
+        if (progress >= colors[i].time && progress <= colors[i + 1].time) {
+          const segmentProgress = (progress - colors[i].time) / (colors[i + 1].time - colors[i].time);
+          const c1 = colors[i].color;
+          const c2 = colors[i + 1].color;
+          const r1 = parseInt(c1.slice(1,3), 16), g1 = parseInt(c1.slice(3,5), 16), b1 = parseInt(c1.slice(5,7), 16);
+          const r2 = parseInt(c2.slice(1,3), 16), g2 = parseInt(c2.slice(3,5), 16), b2 = parseInt(c2.slice(5,7), 16);
+          const r = Math.round(r1 + (r2 - r1) * segmentProgress);
+          const g = Math.round(g1 + (g2 - g1) * segmentProgress);
+          const b = Math.round(b1 + (b2 - b1) * segmentProgress);
+          return `#${r.toString(16).padStart(2,'0')}${g.toString(16).padStart(2,'0')}${b.toString(16).padStart(2,'0')}`;
+        }
+      }
+      return colors[0].color;
+    }
+
+    function updateNavBackground() {
+      const scrollY = window.scrollY;
+      const heroHeight = heroSection ? heroSection.offsetHeight : 600;
+      
+      if (scrollY > 40) {
+        const scrollProgress = Math.min(scrollY / heroHeight, 1);
+        const ambientProgress = ((Date.now() - ambientStartTime) % ambientDuration) / ambientDuration;
+        const combinedProgress = Math.min(scrollProgress + ambientProgress * 0.3, 1);
+        const bgColor = getGradientColor(combinedProgress);
+        nav.style.backgroundColor = bgColor;
+        nav.classList.add('scrolled');
+      } else {
+        nav.style.backgroundColor = 'transparent';
+        nav.classList.remove('scrolled');
+      }
+    }
+
+    window.addEventListener('scroll', updateNavBackground, { passive: true });
+    setInterval(updateNavBackground, 100);
 
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
@@ -234,14 +289,6 @@
     document.querySelectorAll('.fade-in').forEach(el => {
       if (el.getBoundingClientRect().top < window.innerHeight) { el.classList.add('visible'); }
       else { obs.observe(el); }
-    });
-
-    document.getElementById('theme-toggle').addEventListener('click', function() {
-      const html = document.documentElement;
-      const isDark = html.classList.contains('dark');
-      html.classList.remove('dark', 'light');
-      html.classList.add(isDark ? 'light' : 'dark');
-      localStorage.setItem('theme', isDark ? 'light' : 'dark');
     });
   </script>
 

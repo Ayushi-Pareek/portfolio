@@ -7,47 +7,35 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../shared.css">
-  <!-- Theme init: runs before paint to prevent flash of wrong theme -->
-  <script>
-    (function() {
-      var s = localStorage.getItem('theme');
-      var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.classList.add(s === 'dark' || (!s && d) ? 'dark' : 'light');
-    })();
-  </script>
+  
 </head>
 
-<body>
+<body class="work-page">
 
   <nav id="nav">
-    <a href="../index.html" class="nav-name">Ayushi Pareek</a>
-    <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="../index.html#work">Work</a></li>
-        <li><a href="../index.html#about">About</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
-      </ul>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-        <svg class="icon-sun" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.25"/>
-          <line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="2.93" y1="2.93" x2="4.34" y2="4.34" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="11.66" y1="11.66" x2="13.07" y2="13.07" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="2.93" y1="13.07" x2="4.34" y2="11.66" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="11.66" y1="4.34" x2="13.07" y2="2.93" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-        </svg>
-        <svg class="icon-moon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M13.5 10A6 6 0 0 1 6 2.5a6 6 0 1 0 7.5 7.5z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
+    <div class="container">
+      <a href="../index.html" class="nav-name">
+        <img src="../assets/logo-mark.svg" alt="Ayushi Pareek" style="height: 2rem;">
+      </a>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="../index.html#work" class="text-nav">Work</a></li>
+          <li><a href="../index.html#about" class="text-nav">About</a></li>
+          <li><a href="../index.html#contact" class="text-nav">Contact</a></li>
+        </ul>
+        
+      </div>
     </div>
   </nav>
 
+  <div class="hero-section">
+    <div class="wrap">
+      <h1 class="page-title fade-in d1 text-hero">DeepSource</h1>
+    </div>
+  </div>
+
   <div class="wrap">
-    <div class="breadcrumb fade-in">
+    <div class="breadcrumb fade-in d2 text-breadcrumb">
       <a href="../index.html">Home</a>
       <span>→</span>
       <a href="../index.html#work">Work</a>
@@ -55,148 +43,183 @@
       <span>DeepSource</span>
     </div>
 
-    <h1 class="page-title fade-in d1">DeepSource</h1>
-
     <div class="overview-grid fade-in d2">
       <div class="overview-body">
-        <h2>Overview</h2>
-        <p>DeepSource is a static analysis tool that catches code quality issues on every pull request, before bad code reaches the main branch. When I joined as the first and only designer, the product worked but felt unfinished — inconsistent components, navigation that confused users, and a key feature almost nobody was using.</p>
-        <p>Over nine months I led a full platform redesign and rebrand: from a UX audit and user research through to a new information architecture, a rebuilt design system, and high-fidelity handoff across every major surface.</p>
-        <a href="https://deepsource.com" class="see-link" target="_blank" rel="noopener">See product →</a>
+        <h2 class="text-h2">Overview</h2>
+        <p class="text-body">DeepSource is a static analysis tool that catches code quality issues on every pull request, before bad code reaches the main branch. When I joined as the first and only designer, the product worked but felt unfinished — inconsistent components, navigation that confused users, and a key feature almost nobody was using.</p>
+        <p class="text-body">Over nine months I led a full platform redesign and rebrand: from a UX audit and user research through to a new information architecture, a rebuilt design system, and high-fidelity handoff across every major surface.</p>
+        <a href="https://deepsource.com" class="btn-primary text-button" target="_blank" rel="noopener">See product →</a>
       </div>
       <div>
-        <div class="sidebar-block">
-          <p class="sidebar-label">My contribution</p>
-          <div class="sidebar-items">
-            UX audit and research<br>
-            Information architecture<br>
-            Platform redesign<br>
-            Design system and rebrand
+        <div class="sidebar-grid">
+          <div class="sidebar-block">
+            <p class="sidebar-label text-sidebar-label">My contribution</p>
+            <div class="sidebar-items text-sidebar-value">
+              UX audit and research<br>
+              Information architecture<br>
+              Platform redesign<br>
+              Design system and rebrand
+            </div>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-label text-sidebar-label">The team</p>
+            <div class="sidebar-items text-sidebar-value">
+              1 × product designer<br>
+              Engineering team<br>
+              2 × founders
+            </div>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-label text-sidebar-label">Duration</p>
+            <div class="sidebar-items text-sidebar-value">9 months</div>
           </div>
         </div>
-        <div class="sidebar-block">
-          <p class="sidebar-label">The team</p>
-          <div class="sidebar-items">
-            1 × product designer<br>
-            Engineering team<br>
-            2 × founders
+      </div>
+    </div>
+  </div>
+
+  <div class="full-img r169 fade-in" style="background:#111;">
+    <img src="../assets/ds7.png" alt="DeepSource overview">
+  </div>
+
+  <div class="spacer"></div>
+  <div class="spacer"></div>
+
+  <div class="full-img r169 fade-in" style="background:#111;">
+    <img src="../assets/ds1.png" alt="DeepSource cover">
+  </div>
+  <div class="full-img r169 fade-in" style="background:#111;">
+    <img src="../assets/ds2.png" alt="DeepSource cover">
+  </div>
+  <div class="full-img r169 fade-in" style="background:#111;">
+    <img src="../assets/ds3.png" alt="DeepSource cover">
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="wrap">
+    <div class="case-section fade-in">
+      <h2 class="text-h2">Starting with a UX audit and real users</h2>
+      <h3 class="text-h3">What the audit found</h3>
+      <p class="text-body">Before touching anything, I spent time inside the existing product mapping where it broke down. The navigation had no affordance for going back to the repository list — the only way was clicking the logo. Users working across two or more repositories, which was the majority, had no reliable way to switch between them. The product's most powerful feature, Autofix, was buried to the point that most users didn't know it existed.</p>
+      <p class="text-body">The design itself was inconsistent throughout — multiple versions of the same component, no standardisation, no underlying system. Every new feature added more debt.</p>
+
+      <h3 class="text-h3">What users said</h3>
+      <p class="text-body">I ran interviews with the team and with users and found the same themes appearing consistently: navigation felt unpredictable, people were regularly ending up on the homepage when they were trying to go somewhere else, and the overview screens gave them colours but no real signal. There was no way to answer a simple question like "is our code quality getting better over time?"</p>
+      <p class="text-body">Card sorting helped me move from a list of complaints to a prioritised scope — it surfaced which improvements were felt most acutely and which features users actually understood vs. which ones they were guessing at.</p>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+  <div class="spacer"></div>
+
+  <div class="full-img r169 fade-in" style="background:#111;">
+    <img src="../assets/ds4.png" alt="User research and card sorting">
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="wrap">
+    <div class="case-section fade-in">
+      <h2 class="text-h2">Three design principles, kept short on purpose</h2>
+      <p class="text-body">Before designing anything, I needed principles that were specific enough to make decisions with — not values that could mean anything.</p>
+
+      <h3 class="text-h3">Developer first, not buyer first</h3>
+      <p class="text-body">The previous product tried to speak to everyone. The rebrand committed to a bottom-up approach: appeal to the developers who use the tool every day, not the managers who approve the budget. Familiar design language, no enterprise-sales aesthetic, UX that gets out of the way. The bet was that if developers loved it, adoption would follow. It did.</p>
+
+      <h3 class="text-h3">Visible improvements</h3>
+      <p class="text-body">Metrics needed to tell a story. Showing a number in red or green is not a metric — it's a colour. The redesign introduced historical trend views so teams could see movement over time, not just current state. Managers and developers needed different things from the same data, and the interface had to serve both without becoming a dashboard for dashboards.</p>
+
+      <h3 class="text-h3">Components first</h3>
+      <p class="text-body">With nine months and a lot of ground to cover, I drove the design system with atomic design from the start. Tokens and base components before anything else, so that every screen built on a stable foundation rather than inventing its own patterns. The goal wasn't a perfect system — it was a system that could survive new releases without accumulating more debt.</p>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+  <div class="spacer"></div>
+
+  <div class="full-img r43 fade-in" style="background:#111;">
+    <img src="../assets/ds5.png" alt="Design system components">
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="wrap">
+    <div class="case-section fade-in">
+      <h2 class="text-h2">The key design decisions</h2>
+
+      <h3 class="text-h3">Navigation: a sidebar that knows where you are</h3>
+      <p class="text-body">The fix for the navigation problem was a persistent sidebar that let users move between repositories without losing context and without hunting for the logo. Repository switching became a first-class interaction rather than an accident waiting to happen. Issue and language filters were added to surface the most relevant information first, so users working on a specific area weren't sifting through everything.</p>
+
+      <h3 class="text-h3">Surfacing Autofix where the work happens</h3>
+      <p class="text-body">Autofix — which lets developers push fixes directly without manually committing to their VCS — was genuinely valuable but almost invisible. I gave it a dedicated tab and introduced metrics showing time saved, making the value concrete rather than implied. A filter on the issues page also let users surface only the issues with available autofixes, so the feature was accessible exactly when and where it was relevant.</p>
+
+      <h3 class="text-h3">Repository home screen as a real overview</h3>
+      <p class="text-body">The redesigned repository home screen showed current status and historical trends together, in the same view. The goal was for a developer to land on this screen and immediately understand both where things stand and whether they're moving in the right direction — without clicking anywhere else first.</p>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+  <div class="spacer"></div>
+
+  <div class="full-img r169 fade-in" style="background:#111;">
+    <img src="../assets/ds6.png" alt="Redesigned screens">
+  </div>
+  <div class="full-img r169 fade-in" style="background:#111;">
+    <img src="../assets/ds9.png" alt="Redesigned screens">
+  </div>
+  <div class="full-img r169 fade-in" style="background:#111;">
+    <img src="../assets/ds10.png" alt="Redesigned screens">
+  </div>
+  <div class="spacer"></div>
+  <div class="spacer"></div>
+  <div class="full-img r43 fade-in" style="background:#111;">
+    <img src="../assets/ds8.png" alt="Autofix tab and filters">
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="wrap">
+    <div class="case-section fade-in">
+      <h2 class="text-h2">Outcome</h2>
+
+      <div class="outcome-grid outcome-grid-3col">
+        <div class="outcome-card">
+          <p class="outcome-label text-outcome-label">Autofix usage</p>
+          <div class="outcome-stat-block">
+            <p class="outcome-stat text-outcome-stat">+72%</p>
+            <p class="outcome-desc text-outcome-desc">after surfacing the feature where it mattered</p>
           </div>
         </div>
-        <div class="sidebar-block">
-          <p class="sidebar-label">Duration</p>
-          <div class="sidebar-items">9 months</div>
+        <div class="outcome-card">
+          <p class="outcome-label text-outcome-label">Seed funding secured</p>
+          <div class="outcome-stat-block">
+            <p class="outcome-stat text-outcome-stat">$2.6M</p>
+            <p class="outcome-desc text-outcome-desc">during the redesign period</p>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="full-img r169 fade-in" style="background: linear-gradient(135deg,#0f1a15,#1a2410);">
-    <!-- <img src="../assets/deepsource-cover.jpg" alt="DeepSource redesign overview"> -->
-  </div>
-
-  <div class="spacer"></div>
-
-  <div class="wrap">
-    <div class="case-section fade-in">
-      <h2>Starting with a UX audit and real users</h2>
-      <h3>What the audit found</h3>
-      <p>Before touching anything, I spent time inside the existing product mapping where it broke down. The navigation had no affordance for going back to the repository list — the only way was clicking the logo. Users working across two or more repositories, which was the majority, had no reliable way to switch between them. The product's most powerful feature, Autofix, was buried to the point that most users didn't know it existed.</p>
-      <p>The design itself was inconsistent throughout — multiple versions of the same component, no standardisation, no underlying system. Every new feature added more debt.</p>
-
-      <h3>What users said</h3>
-      <p>I ran interviews with the team and with users and found the same themes appearing consistently: navigation felt unpredictable, people were regularly ending up on the homepage when they were trying to go somewhere else, and the overview screens gave them colours but no real signal. There was no way to answer a simple question like "is our code quality getting better over time?"</p>
-      <p>Card sorting helped me move from a list of complaints to a prioritised scope — it surfaced which improvements were felt most acutely and which features users actually understood vs. which ones they were guessing at.</p>
-    </div>
-  </div>
-
-  <div class="full-img r169 fade-in" style="background:#111a10;">
-    <!-- <img src="../assets/deepsource-research.jpg" alt="User research and card sorting"> -->
-  </div>
-
-  <div class="spacer"></div>
-
-  <div class="wrap">
-    <div class="case-section fade-in">
-      <h2>Three design principles, kept short on purpose</h2>
-      <p>Before designing anything, I needed principles that were specific enough to make decisions with — not values that could mean anything.</p>
-
-      <h3>Developer first, not buyer first</h3>
-      <p>The previous product tried to speak to everyone. The rebrand committed to a bottom-up approach: appeal to the developers who use the tool every day, not the managers who approve the budget. Familiar design language, no enterprise-sales aesthetic, UX that gets out of the way. The bet was that if developers loved it, adoption would follow. It did.</p>
-
-      <h3>Visible improvements</h3>
-      <p>Metrics needed to tell a story. Showing a number in red or green is not a metric — it's a colour. The redesign introduced historical trend views so teams could see movement over time, not just current state. Managers and developers needed different things from the same data, and the interface had to serve both without becoming a dashboard for dashboards.</p>
-
-      <h3>Components first</h3>
-      <p>With nine months and a lot of ground to cover, I drove the design system with atomic design from the start. Tokens and base components before anything else, so that every screen built on a stable foundation rather than inventing its own patterns. The goal wasn't a perfect system — it was a system that could survive new releases without accumulating more debt.</p>
-    </div>
-  </div>
-
-  <div class="full-img r43 fade-in" style="background:#0f1510;">
-    <!-- <img src="../assets/deepsource-system.jpg" alt="Design system components"> -->
-  </div>
-
-  <div class="spacer"></div>
-
-  <div class="wrap">
-    <div class="case-section fade-in">
-      <h2>The key design decisions</h2>
-
-      <h3>Navigation: a sidebar that knows where you are</h3>
-      <p>The fix for the navigation problem was a persistent sidebar that let users move between repositories without losing context and without hunting for the logo. Repository switching became a first-class interaction rather than an accident waiting to happen. Issue and language filters were added to surface the most relevant information first, so users working on a specific area weren't sifting through everything.</p>
-
-      <h3>Surfacing Autofix where the work happens</h3>
-      <p>Autofix — which lets developers push fixes directly without manually committing to their VCS — was genuinely valuable but almost invisible. I gave it a dedicated tab and introduced metrics showing time saved, making the value concrete rather than implied. A filter on the issues page also let users surface only the issues with available autofixes, so the feature was accessible exactly when and where it was relevant.</p>
-
-      <h3>Repository home screen as a real overview</h3>
-      <p>The redesigned repository home screen showed current status and historical trends together, in the same view. The goal was for a developer to land on this screen and immediately understand both where things stand and whether they're moving in the right direction — without clicking anywhere else first.</p>
-    </div>
-  </div>
-
-  <div class="full-img r169 fade-in" style="background:#101810;">
-    <!-- <img src="../assets/deepsource-screens.jpg" alt="Redesigned screens"> -->
-  </div>
-  <div class="spacer-sm"></div>
-  <div class="full-img r43 fade-in" style="background:#0d1a0d;">
-    <!-- <img src="../assets/deepsource-autofix.jpg" alt="Autofix tab and filters"> -->
-  </div>
-
-  <div class="spacer"></div>
-
-  <div class="wrap">
-    <div class="case-section fade-in">
-      <h2>Outcome</h2>
-
-      <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 2.5rem;">
-        <div style="background: var(--surface); padding: 1.75rem 1.5rem;">
-          <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem;">Autofix usage</p>
-          <p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 0.5rem;">+72%</p>
-          <p style="font-size: 0.875rem; color: var(--grey2); font-weight: 300; margin: 0;">after surfacing the feature where it mattered</p>
-        </div>
-        <div style="background: var(--surface); padding: 1.75rem 1.5rem;">
-          <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem;">Seed funding secured</p>
-          <p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 0.5rem;">$2.6M</p>
-          <p style="font-size: 0.875rem; color: var(--grey2); font-weight: 300; margin: 0;">during the redesign period</p>
-        </div>
-        <div style="background: var(--surface); padding: 1.75rem 1.5rem;">
-          <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem;">Design system</p>
-          <p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 0.5rem;">0→1</p>
-          <p style="font-size: 0.875rem; color: var(--grey2); font-weight: 300; margin: 0;">atomic system built to survive new releases</p>
+        <div class="outcome-card">
+          <p class="outcome-label text-outcome-label">Design system</p>
+          <div class="outcome-stat-block">
+            <p class="outcome-stat text-outcome-stat">0→1</p>
+            <p class="outcome-desc text-outcome-desc">atomic system built to survive new releases</p>
+          </div>
         </div>
       </div>
 
-      <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 2.5rem;">The redesign demo impressed enough that founders were fielding questions about who designed it. Active users grew, enterprise deals followed, and revenue increased. The bet on developer-first design — building for the people using the tool, not the people buying it — turned out to be the right one.</p>
+      <p class="outcome-summary text-body">The redesign demo impressed enough that founders were fielding questions about who designed it. Active users grew, enterprise deals followed, and revenue increased. The bet on developer-first design — building for the people using the tool, not the people buying it — turned out to be the right one.</p>
 
-      <div style="border-left: 1px solid var(--border); padding-left: 1.5rem; margin-bottom: 2.5rem;">
-        <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 1rem;">What I'd do differently</p>
-        <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 1rem;">Nine months is enough time to do this well, but I underestimated how much time the design system would need once we got into complex components. Atomic design was the right call — I'd just start the documentation earlier, before the component count makes it feel impossible to catch up.</p>
-        <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin: 0;">The Autofix result validated something worth carrying forward: discoverability is not a nice-to-have. A 72% usage increase came from putting a feature where people could find it, not from changing the feature itself.</p>
+      <div class="reflection-block">
+        <p class="reflection-title text-reflection-title">What I'd do differently</p>
+        <p class="text-body">Nine months is enough time to do this well, but I underestimated how much time the design system would need once we got into complex components. Atomic design was the right call — I'd just start the documentation earlier, before the component count makes it feel impossible to catch up.</p>
+        <p class="text-body">The Autofix result validated something worth carrying forward: discoverability is not a nice-to-have. A 72% usage increase came from putting a feature where people could find it, not from changing the feature itself.</p>
       </div>
 
-      <a href="https://deepsource.com" class="see-link" target="_blank" rel="noopener">See product →</a>
+      <a href="https://deepsource.com" class="btn-primary text-button" target="_blank" rel="noopener">See product →</a>
     </div>
 
-    <div class="next-project fade-in">
-      <p class="next-label">Next project</p>
+    <div class="next-project fade-in text-next-project">
+      <p class="next-label text-next-label">Next project</p>
       <a href="appsmith.html" class="next-link">
         <span class="next-title">Appsmith</span>
         <span class="next-arrow">→</span>
@@ -205,18 +228,72 @@
   </div>
 
   <div class="footer-strip">
-    <p class="footer-bio"><strong>Ayushi Pareek</strong> — senior product designer for developer tools, based in Bengaluru.</p>
-    <a href="mailto:ayushipareek@gmail.com" class="email-cta">Email me →</a>
+    <div class="footer-strip-inner">
+      <p class="footer-bio"><strong>Ayushi Pareek</strong> — senior product designer for developer tools, based in Bengaluru.</p>
+      <a href="mailto:ayushipareek1@gmail.com" class="email-cta text-button">Email me →</a>
+    </div>
   </div>
 
-  <footer>
-    <span>Ayushi Pareek</span>
-    <span>©2025</span>
+  <footer class="text-footer">
+    <div class="container">
+      <span class="text-footer">Ayushi Pareek</span>
+      <span class="text-footer">©2025</span>
+    </div>
   </footer>
 
   <script>
     const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+    const heroSection = document.querySelector('.hero-section');
+    let ambientStartTime = Date.now();
+    const ambientDuration = 24000;
+
+    const lightGradient = [
+      { time: 0, color: '#e9f6f1' },
+      { time: 0.16, color: '#eef4df' },
+      { time: 0.33, color: '#eff6ed' },
+      { time: 0.5, color: '#eaf4ff' },
+      { time: 0.66, color: '#f7e9ee' },
+      { time: 0.83, color: '#f9e6eb' },
+      { time: 1, color: '#e9f6f1' }
+    ];
+
+    function getGradientColor(progress) {
+      const colors = lightGradient;
+      for (let i = 0; i < colors.length - 1; i++) {
+        if (progress >= colors[i].time && progress <= colors[i + 1].time) {
+          const segmentProgress = (progress - colors[i].time) / (colors[i + 1].time - colors[i].time);
+          const c1 = colors[i].color;
+          const c2 = colors[i + 1].color;
+          const r1 = parseInt(c1.slice(1,3), 16), g1 = parseInt(c1.slice(3,5), 16), b1 = parseInt(c1.slice(5,7), 16);
+          const r2 = parseInt(c2.slice(1,3), 16), g2 = parseInt(c2.slice(3,5), 16), b2 = parseInt(c2.slice(5,7), 16);
+          const r = Math.round(r1 + (r2 - r1) * segmentProgress);
+          const g = Math.round(g1 + (g2 - g1) * segmentProgress);
+          const b = Math.round(b1 + (b2 - b1) * segmentProgress);
+          return `#${r.toString(16).padStart(2,'0')}${g.toString(16).padStart(2,'0')}${b.toString(16).padStart(2,'0')}`;
+        }
+      }
+      return colors[0].color;
+    }
+
+    function updateNavBackground() {
+      const scrollY = window.scrollY;
+      const heroHeight = heroSection ? heroSection.offsetHeight : 600;
+      
+      if (scrollY > 40) {
+        const scrollProgress = Math.min(scrollY / heroHeight, 1);
+        const ambientProgress = ((Date.now() - ambientStartTime) % ambientDuration) / ambientDuration;
+        const combinedProgress = Math.min(scrollProgress + ambientProgress * 0.3, 1);
+        const bgColor = getGradientColor(combinedProgress);
+        nav.style.backgroundColor = bgColor;
+        nav.classList.add('scrolled');
+      } else {
+        nav.style.backgroundColor = 'transparent';
+        nav.classList.remove('scrolled');
+      }
+    }
+
+    window.addEventListener('scroll', updateNavBackground, { passive: true });
+    setInterval(updateNavBackground, 100);
 
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
@@ -225,14 +302,6 @@
     document.querySelectorAll('.fade-in').forEach(el => {
       if (el.getBoundingClientRect().top < window.innerHeight) { el.classList.add('visible'); }
       else { obs.observe(el); }
-    });
-
-    document.getElementById('theme-toggle').addEventListener('click', function() {
-      const html = document.documentElement;
-      const isDark = html.classList.contains('dark');
-      html.classList.remove('dark', 'light');
-      html.classList.add(isDark ? 'light' : 'dark');
-      localStorage.setItem('theme', isDark ? 'light' : 'dark');
     });
   </script>
 

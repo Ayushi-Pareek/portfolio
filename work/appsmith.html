@@ -7,47 +7,35 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../shared.css">
-  <!-- Theme init: runs before paint to prevent flash of wrong theme -->
-  <script>
-    (function() {
-      var s = localStorage.getItem('theme');
-      var d = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.classList.add(s === 'dark' || (!s && d) ? 'dark' : 'light');
-    })();
-  </script>
+  
 </head>
 
-<body>
+<body class="work-page">
 
   <nav id="nav">
-    <a href="../index.html" class="nav-name">Ayushi Pareek</a>
-    <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="../index.html#work">Work</a></li>
-        <li><a href="../index.html#about">About</a></li>
-        <li><a href="../index.html#contact">Contact</a></li>
-      </ul>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-        <svg class="icon-sun" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.25"/>
-          <line x1="8" y1="1" x2="8" y2="3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="8" y1="13" x2="8" y2="15" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="1" y1="8" x2="3" y2="8" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="13" y1="8" x2="15" y2="8" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="2.93" y1="2.93" x2="4.34" y2="4.34" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="11.66" y1="11.66" x2="13.07" y2="13.07" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="2.93" y1="13.07" x2="4.34" y2="11.66" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-          <line x1="11.66" y1="4.34" x2="13.07" y2="2.93" stroke="currentColor" stroke-width="1.25" stroke-linecap="round"/>
-        </svg>
-        <svg class="icon-moon" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M13.5 10A6 6 0 0 1 6 2.5a6 6 0 1 0 7.5 7.5z" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
+    <div class="container">
+      <a href="../index.html" class="nav-name">
+        <img src="../assets/logo-mark.svg" alt="Ayushi Pareek" style="height: 2rem;">
+      </a>
+      <div class="nav-right">
+        <ul class="nav-links">
+          <li><a href="../index.html#work" class="text-nav">Work</a></li>
+          <li><a href="../index.html#about" class="text-nav">About</a></li>
+          <li><a href="../index.html#contact" class="text-nav">Contact</a></li>
+        </ul>
+        
+      </div>
     </div>
   </nav>
 
+  <div class="hero-section">
+    <div class="wrap">
+      <h1 class="page-title fade-in d1 text-hero">Appsmith</h1>
+    </div>
+  </div>
+
   <div class="wrap">
-    <div class="breadcrumb fade-in">
+    <div class="breadcrumb fade-in d2 text-breadcrumb">
       <a href="../index.html">Home</a>
       <span>→</span>
       <a href="../index.html#work">Work</a>
@@ -55,36 +43,36 @@
       <span>Appsmith</span>
     </div>
 
-    <h1 class="page-title fade-in d1">Appsmith</h1>
-
     <div class="overview-grid fade-in d2">
       <div class="overview-body">
-        <h2>Overview</h2>
-        <p>Appsmith is an open-source platform that lets backend developers build and deploy internal applications without front-end expertise. Developers drag widgets onto a canvas, configure them through a property pane, and write JavaScript where they need logic.</p>
-        <p>I was brought in to design a no-code solution for creating workflows — the behaviour that happens when a user interacts with a widget. I owned the interaction model and visual design end-to-end, working with a PM to define requirements and a design manager for final review.</p>
-        <a href="https://www.appsmith.com" class="see-link" target="_blank" rel="noopener">See product →</a>
+        <h2 class="text-h2">Overview</h2>
+        <p class="text-body">Appsmith is an open-source platform that lets backend developers build and deploy internal applications without front-end expertise. Developers drag widgets onto a canvas, configure them through a property pane, and write JavaScript where they need logic.</p>
+        <p class="text-body">I was brought in to design a no-code solution for creating workflows — the behaviour that happens when a user interacts with a widget. I owned the interaction model and visual design end-to-end, working with a PM to define requirements and a design manager for final review.</p>
+<a href="https://www.appsmith.com" class="btn-primary text-button" target="_blank" rel="noopener">See product →</a>
       </div>
       <div>
-        <div class="sidebar-block">
-          <p class="sidebar-label">My contribution</p>
-          <div class="sidebar-items">
-            Interaction design<br>
-            Visual design<br>
-            Component design<br>
-            Developer handoff
+        <div class="sidebar-grid">
+          <div class="sidebar-block">
+            <p class="sidebar-label text-sidebar-label">My contribution</p>
+            <div class="sidebar-items text-sidebar-value">
+              Interaction design<br>
+              Visual design<br>
+              Component design<br>
+              Developer handoff
+            </div>
           </div>
-        </div>
-        <div class="sidebar-block">
-          <p class="sidebar-label">The team</p>
-          <div class="sidebar-items">
-            1 × product designer<br>
-            1 × PM<br>
-            1 × design manager
+          <div class="sidebar-block">
+            <p class="sidebar-label text-sidebar-label">The team</p>
+            <div class="sidebar-items text-sidebar-value">
+              1 × product designer<br>
+              1 × PM<br>
+              1 × design manager
+            </div>
           </div>
-        </div>
-        <div class="sidebar-block">
-          <p class="sidebar-label">Type</p>
-          <div class="sidebar-items">New feature on existing product</div>
+          <div class="sidebar-block">
+            <p class="sidebar-label text-sidebar-label">Type</p>
+            <div class="sidebar-items text-sidebar-value">New feature on existing product</div>
+          </div>
         </div>
       </div>
     </div>
@@ -98,15 +86,18 @@
 
   <div class="wrap">
     <div class="case-section fade-in">
-      <h2>The problem</h2>
-      <h3>Workflows existed, but only if you could write them</h3>
-      <p>Before this feature, adding behaviour to a widget meant writing JavaScript. That worked for developers who were comfortable with code — but Appsmith's whole premise is that not everyone building internal tools needs to be. For users who weren't confident writing JS, widgets sat largely static. The more powerful the platform became, the wider this gap grew.</p>
-      <p>Research and user interviews confirmed the hypothesis: there was real demand for a no-code way to attach actions to widgets, and it was blocking a portion of users from building anything meaningful at all.</p>
+      <h2 class="text-h2">The problem</h2>
+      <h3 class="text-h3">Workflows existed, but only if you could write them</h3>
+      <p class="text-body">Before this feature, adding behaviour to a widget meant writing JavaScript. That worked for developers who were comfortable with code — but Appsmith's whole premise is that not everyone building internal tools needs to be. For users who weren't confident writing JS, widgets sat largely static. The more powerful the platform became, the wider this gap grew.</p>
+      <p class="text-body">Research and user interviews confirmed the hypothesis: there was real demand for a no-code way to attach actions to widgets, and it was blocking a portion of users from building anything meaningful at all.</p>
 
-      <h3>What "no-code workflow" actually needed to mean</h3>
-      <p>The insight from research that shaped the entire design: users who needed no-code support rarely needed more than two steps. Define what happens on success and what happens on failure — that covers the vast majority of real workflows. Users building something more complex than that almost always knew JavaScript and would write it themselves. The design didn't need to be a full visual programming environment. It needed to be exactly two steps, done well.</p>
+      <h3 class="text-h3">What "no-code workflow" actually needed to mean</h3>
+      <p class="text-body">The insight from research that shaped the entire design: users who needed no-code support rarely needed more than two steps. Define what happens on success and what happens on failure — that covers the vast majority of real workflows. Users building something more complex than that almost always knew JavaScript and would write it themselves. The design didn't need to be a full visual programming environment. It needed to be exactly two steps, done well.</p>
     </div>
   </div>
+
+  <div class="spacer"></div>
+  <div class="spacer"></div>
 
   <div class="full-img r169 fade-in" style="background:#0d1520;">
     <!-- <img src="../assets/appsmith-workflow-diagram.jpg" alt="Two-step workflow diagram"> -->
@@ -116,21 +107,23 @@
 
   <div class="wrap">
     <div class="case-section fade-in">
-      <h2>The constraint that made it better</h2>
-      <h3>No new screens</h3>
-      <p>The hard constraint on this project was spatial: the action selector had to live inside the existing property pane sidebar. Adding a new full screen would have broken the established interaction pattern of the platform — the property pane is where widget configuration happens, and that pattern had to hold.</p>
-      <p>Most competitors had built elaborate, full-page workflow builders. We couldn't replicate that, and once I understood the two-step insight from research, I realised we didn't need to. The constraint and the finding pointed in the same direction: keep it small, keep it focused, and trust that users who need more will write JavaScript.</p>
+      <h2 class="text-h2">The constraint that made it better</h2>
+      <h3 class="text-h3">No new screens</h3>
+      <p class="text-body">The hard constraint on this project was spatial: the action selector had to live inside the existing property pane sidebar. Adding a new full screen would have broken the established interaction pattern of the platform — the property pane is where widget configuration happens, and that pattern had to hold.</p>
+      <p class="text-body">Most competitors had built elaborate, full-page workflow builders. We couldn't replicate that, and once I understood the two-step insight from research, I realised we didn't need to. The constraint and the finding pointed in the same direction: keep it small, keep it focused, and trust that users who need more will write JavaScript.</p>
 
-      <h3>What I designed</h3>
-      <p>The action selector drops down inline from a widget event — the moment a developer clicks to configure what happens on a click or search, the selector opens in context. Step one: choose an action from a categorised list. Step two: define what happens on success and what happens on failure, each of which can itself chain to another action. That's the full depth of the no-code path.</p>
-      <p>Callbacks — the on-success and on-failure branches — are surfaced directly in the property pane as collapsible sections, so developers can see the shape of a workflow at a glance without expanding everything. The component handles the common case cleanly and steps aside for JS when users need it.</p>
+      <h3 class="text-h3">What I designed</h3>
+      <p class="text-body">The action selector drops down inline from a widget event — the moment a developer clicks to configure what happens on a click or search, the selector opens in context. Step one: choose an action from a categorised list. Step two: define what happens on success and what happens on failure, each of which can itself chain to another action. That's the full depth of the no-code path.</p>
+      <p class="text-body">Callbacks — the on-success and on-failure branches — are surfaced directly in the property pane as collapsible sections, so developers can see the shape of a workflow at a glance without expanding everything. The component handles the common case cleanly and steps aside for JS when users need it.</p>
     </div>
   </div>
+
+  <div class="spacer"></div>
+  <div class="spacer"></div>
 
   <div class="full-img r169 fade-in" style="background:#0d1218;">
     <!-- <img src="../assets/appsmith-action-selector.jpg" alt="Action selector components"> -->
   </div>
-  <div class="spacer-sm"></div>
   <div class="full-img r43 fade-in" style="background:#0a1015;">
     <!-- <img src="../assets/appsmith-callbacks.jpg" alt="Callback configuration in property pane"> -->
   </div>
@@ -139,8 +132,8 @@
 
   <div class="wrap">
     <div class="case-section fade-in">
-      <h2>Testing</h2>
-      <p>User testing confirmed that people understood how to use the action selector to create workflows without guidance. Minor usability issues surfaced and were fixed before release — nothing that required rethinking the model, which validated that the two-step structure matched how users were actually thinking about the problem.</p>
+      <h2 class="text-h2">Testing</h2>
+      <p class="text-body">User testing confirmed that people understood how to use the action selector to create workflows without guidance. Minor usability issues surfaced and were fixed before release — nothing that required rethinking the model, which validated that the two-step structure matched how users were actually thinking about the problem.</p>
     </div>
   </div>
 
@@ -148,34 +141,38 @@
 
   <div class="wrap">
     <div class="case-section fade-in">
-      <h2>Outcome</h2>
+      <h2 class="text-h2">Outcome</h2>
 
-      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 2.5rem;">
-        <div style="background: var(--surface); padding: 1.75rem 1.5rem;">
-          <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem;">Callbacks created</p>
-          <p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 0.5rem;">+62%</p>
-          <p style="font-size: 0.875rem; color: var(--grey2); font-weight: 300; margin: 0;">rise in second-level actions after launch</p>
+      <div class="outcome-grid cols-2">
+        <div class="outcome-card">
+          <p class="outcome-label text-outcome-label">Callbacks created</p>
+          <div class="outcome-stat-block">
+            <p class="outcome-stat text-outcome-stat">+62%</p>
+            <p class="outcome-desc text-outcome-desc">rise in second-level actions after launch</p>
+          </div>
         </div>
-        <div style="background: var(--surface); padding: 1.75rem 1.5rem;">
-          <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 0.6rem;">Complex workflows</p>
-          <p style="font-size: 2.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--white); line-height: 1; margin-bottom: 0.5rem;">Up</p>
-          <p style="font-size: 0.875rem; color: var(--grey2); font-weight: 300; margin: 0;">more users building multi-step flows than before</p>
+        <div class="outcome-card">
+          <p class="outcome-label text-outcome-label">Complex workflows</p>
+          <div class="outcome-stat-block">
+            <p class="outcome-stat text-outcome-stat">Up</p>
+            <p class="outcome-desc text-outcome-desc">more users building multi-step flows than before</p>
+          </div>
         </div>
       </div>
 
-      <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 2.5rem;">The 62% rise in callbacks is the clearest signal: users weren't just adding single actions anymore — they were building conditional flows with success and failure branches. The feature unlocked complexity that existed in the platform but wasn't previously accessible without writing code.</p>
+      <p class="outcome-summary text-body">The 62% rise in callbacks is the clearest signal: users weren't just adding single actions anymore — they were building conditional flows with success and failure branches. The feature unlocked complexity that existed in the platform but wasn't previously accessible without writing code.</p>
 
-      <div style="border-left: 1px solid var(--border); padding-left: 1.5rem; margin-bottom: 2.5rem;">
-        <p style="font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey2); margin-bottom: 1rem;">What this project taught me</p>
-        <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin-bottom: 1rem;">The competitive research initially felt like a constraint — everyone else had built elaborate workflow builders and we couldn't. But the research finding made the constraint irrelevant: our users didn't need an elaborate workflow builder. They needed two steps done clearly. Designing less, on purpose, because the data said so, is a different thing from designing less because of time pressure. This was the former.</p>
-        <p style="font-size: 1.0625rem; line-height: 1.75; color: var(--grey1); font-weight: 300; margin: 0;">The spatial constraint — fitting everything into the existing sidebar — pushed the design toward something more focused than a blank canvas would have produced. Constraints that feel like limitations often just are. But occasionally they're doing design work for you.</p>
+      <div class="reflection-block">
+        <p class="reflection-title text-reflection-title">What this project taught me</p>
+        <p class="text-body">The competitive research initially felt like a constraint — everyone else had built elaborate workflow builders and we couldn't. But the research finding made the constraint irrelevant: our users didn't need an elaborate workflow builder. They needed two steps done clearly. Designing less, on purpose, because the data said so, is a different thing from designing less because of time pressure. This was the former.</p>
+        <p class="text-body">The spatial constraint — fitting everything into the existing sidebar — pushed the design toward something more focused than a blank canvas would have produced. Constraints that feel like limitations often just are. But occasionally they're doing design work for you.</p>
       </div>
 
-      <a href="https://www.appsmith.com" class="see-link" target="_blank" rel="noopener">See product →</a>
+<a href="https://www.appsmith.com" class="btn-primary text-button" target="_blank" rel="noopener">See product →</a>
     </div>
 
-    <div class="next-project fade-in">
-      <p class="next-label">Next project</p>
+    <div class="next-project fade-in text-next-project">
+      <p class="next-label text-next-label">Next project</p>
       <a href="parseable.html" class="next-link">
         <span class="next-title">Parseable</span>
         <span class="next-arrow">→</span>
@@ -184,18 +181,72 @@
   </div>
 
   <div class="footer-strip">
-    <p class="footer-bio"><strong>Ayushi Pareek</strong> — senior product designer for developer tools, based in Bengaluru.</p>
-    <a href="mailto:ayushipareek@gmail.com" class="email-cta">Email me →</a>
+    <div class="footer-strip-inner">
+      <p class="footer-bio"><strong>Ayushi Pareek</strong> — senior product designer for developer tools, based in Bengaluru.</p>
+      <a href="mailto:ayushipareek1@gmail.com" class="email-cta text-button">Email me →</a>
+    </div>
   </div>
 
-  <footer>
-    <span>Ayushi Pareek</span>
-    <span>©2025</span>
+  <footer class="text-footer">
+    <div class="container">
+      <span class="text-footer">Ayushi Pareek</span>
+      <span class="text-footer">©2025</span>
+    </div>
   </footer>
 
   <script>
     const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+    const heroSection = document.querySelector('.hero-section');
+    let ambientStartTime = Date.now();
+    const ambientDuration = 24000;
+
+    const lightGradient = [
+      { time: 0, color: '#e9f6f1' },
+      { time: 0.16, color: '#eef4df' },
+      { time: 0.33, color: '#eff6ed' },
+      { time: 0.5, color: '#eaf4ff' },
+      { time: 0.66, color: '#f7e9ee' },
+      { time: 0.83, color: '#f9e6eb' },
+      { time: 1, color: '#e9f6f1' }
+    ];
+
+    function getGradientColor(progress) {
+      const colors = lightGradient;
+      for (let i = 0; i < colors.length - 1; i++) {
+        if (progress >= colors[i].time && progress <= colors[i + 1].time) {
+          const segmentProgress = (progress - colors[i].time) / (colors[i + 1].time - colors[i].time);
+          const c1 = colors[i].color;
+          const c2 = colors[i + 1].color;
+          const r1 = parseInt(c1.slice(1,3), 16), g1 = parseInt(c1.slice(3,5), 16), b1 = parseInt(c1.slice(5,7), 16);
+          const r2 = parseInt(c2.slice(1,3), 16), g2 = parseInt(c2.slice(3,5), 16), b2 = parseInt(c2.slice(5,7), 16);
+          const r = Math.round(r1 + (r2 - r1) * segmentProgress);
+          const g = Math.round(g1 + (g2 - g1) * segmentProgress);
+          const b = Math.round(b1 + (b2 - b1) * segmentProgress);
+          return `#${r.toString(16).padStart(2,'0')}${g.toString(16).padStart(2,'0')}${b.toString(16).padStart(2,'0')}`;
+        }
+      }
+      return colors[0].color;
+    }
+
+    function updateNavBackground() {
+      const scrollY = window.scrollY;
+      const heroHeight = heroSection ? heroSection.offsetHeight : 600;
+      
+      if (scrollY > 40) {
+        const scrollProgress = Math.min(scrollY / heroHeight, 1);
+        const ambientProgress = ((Date.now() - ambientStartTime) % ambientDuration) / ambientDuration;
+        const combinedProgress = Math.min(scrollProgress + ambientProgress * 0.3, 1);
+        const bgColor = getGradientColor(combinedProgress);
+        nav.style.backgroundColor = bgColor;
+        nav.classList.add('scrolled');
+      } else {
+        nav.style.backgroundColor = 'transparent';
+        nav.classList.remove('scrolled');
+      }
+    }
+
+    window.addEventListener('scroll', updateNavBackground, { passive: true });
+    setInterval(updateNavBackground, 100);
 
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
@@ -204,14 +255,6 @@
     document.querySelectorAll('.fade-in').forEach(el => {
       if (el.getBoundingClientRect().top < window.innerHeight) { el.classList.add('visible'); }
       else { obs.observe(el); }
-    });
-
-    document.getElementById('theme-toggle').addEventListener('click', function() {
-      const html = document.documentElement;
-      const isDark = html.classList.contains('dark');
-      html.classList.remove('dark', 'light');
-      html.classList.add(isDark ? 'light' : 'dark');
-      localStorage.setItem('theme', isDark ? 'light' : 'dark');
     });
   </script>
 
