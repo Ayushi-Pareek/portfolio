@@ -54,15 +54,13 @@
         <div class="sidebar-grid">
           <div class="sidebar-block">
             <p class="sidebar-label text-sidebar-label">My contribution</p>
-      
-              <div class="sidebar-items text-sidebar-value">
-                End-to-end product design<br>
-                AI agent observability UX<br>
-                Information architecture<br>
-                Design system rebuild
-              </div>
-            
-   
+            <div class="sidebar-items text-sidebar-value">
+              End-to-end product design<br>
+              Information architecture<br>
+              Design system rebuild<br>
+              AI investigation UX
+            </div>
+          </div>
           <div class="sidebar-block">
             <p class="sidebar-label text-sidebar-label">The team</p>
             <div class="sidebar-items text-sidebar-value">
@@ -100,69 +98,65 @@
   <div class="spacer"></div>
 
   <div class="wrap">
+    <div class="case-section fade-in">
+      <h2 class="text-section-label">AI agent observability: designing for a problem most tools ignored</h2>
+      <h3 class="text-h3">Why logs alone don't work for agents</h3>
+      <p class="text-body">AI agents are distributed applications — they call LLMs, retrieve from vector databases, invoke external APIs, and chain all of it into a single workflow. When something goes wrong, most platforms pointed engineers at raw logs. The problem: logs don't show time. You can see what happened but not when, how long each step took, or which part of the chain caused the failure. For an agent that makes five sequential calls before responding, that gap is the difference between a five-minute debug and a two-hour one.</p>
+      <p class="text-body">This was a genuinely new design space. When I started, very few products existed — Langfuse, Arize Phoenix, and early Maxim were the only comparable tools. There was no established pattern to follow. The decisions we made were based on what engineers actually needed to do: find the slow span, find the failed call, understand why, and fix it fast.</p>
+
+      <h3 class="text-h3">The waterfall view</h3>
+      <p class="text-body">The core design decision was to show every operation in an agent's lifecycle as a waterfall — each LLM call, tool execution, and agent step plotted against time so you can see at a glance which span took the longest. The visual weight of time made the problem legible in a way that a log list never could.</p>
+      <p class="text-body">But the waterfall isn't just a visualisation. Every span is interactive — clicking any step takes you directly to the logs and traces associated with that specific operation, so the path from "this call was slow" to "here is why" is a single click. The design had to make that path obvious without cluttering the waterfall itself. I kept the interaction surface minimal: the span is the affordance. Clicking it opens the detail. Nothing else competes for attention.</p>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+  <div class="spacer"></div>
+
+  <div class="full-img r169 fade-in" style="background:#101520;">
+    <!-- <img src="../assets/parseable-agent-waterfall.jpg" alt="Agent waterfall view with interactive spans"> -->
+  </div>
+  <p class="img-caption">Agent waterfall view with interactive spans</p>
+
+  <div class="spacer"></div>
+
   <div class="wrap">
-  <div class="case-section fade-in">
-    <h2>AI agent observability: designing for a problem most tools ignored</h2>
-    <h3>Why logs alone don't work for agents</h3>
-    <p>AI agents are distributed applications — they call LLMs, retrieve from vector databases, invoke external APIs, and chain all of it into a single workflow. When something goes wrong, most platforms pointed engineers at raw logs. The problem: logs don't show time. You can see what happened but not when, how long each step took, or which part of the chain caused the failure. For an agent that makes five sequential calls before responding, that gap is the difference between a five-minute debug and a two-hour one.</p>
-    <p>This was a genuinely new design space. When I started, very few products existed — Langfuse, Arize Phoenix, and early Maxim were the only comparable tools. There was no established pattern to follow. The decisions we made were based on what engineers actually needed to do: find the slow span, find the failed call, understand why, and fix it fast.</p>
-
-    <h3>The waterfall view</h3>
-    <p>The core design decision was to show every operation in an agent's lifecycle as a waterfall — each LLM call, tool execution, and agent step plotted against time so you can see at a glance which span took the longest. The visual weight of time made the problem legible in a way that a log list never could.</p>
-    <p>But the waterfall isn't just a visualisation. Every span is interactive — clicking any step takes you directly to the logs and traces associated with that specific operation, so the path from "this call was slow" to "here is why" is a single click. The design had to make that path obvious without cluttering the waterfall itself. I kept the interaction surface minimal: the span is the affordance. Clicking it opens the detail. Nothing else competes for attention.</p>
-  </div>
-</div>
-
-<div class="full-img r169 fade-in" style="background:#101520;">
-  <!-- <img src="../assets/parseable-agent-waterfall.jpg" alt="Agent waterfall view with interactive spans"> -->
-</div>
-
-<div class="spacer"></div>
-
-<div class="wrap">
-  <div class="case-section fade-in">
-    <h3>The overview dashboard: surface cost before anything else</h3>
-    <p>The overview dashboard needed to answer one question before any other: which of your agents is costing you the most, and why. Engineers running AI agents in production are spending real money on every invocation — and failed invocations cost the same as successful ones. Latency compounds cost. Token inefficiency compounds cost.</p>
-    <p>I designed the panels around that priority: invocations and failure rate first, then token usage and cost, then latency. The sequence is deliberate — it gives engineers a path from "something is wrong" to "here is what it's costing you" to "here is where the time is going." Each panel links to the session drill-down filtered to the relevant agent and time range, so the overview is never a dead end.</p>
-  </div>
-</div>
-
-<div class="full-img r43 fade-in" style="background:#0f1520;">
-  <!-- <img src="../assets/parseable-agent-overview.jpg" alt="Agent observability overview dashboard"> -->
-</div>
-
-<div class="spacer"></div>
-
-<div class="wrap">
-  <div class="case-section fade-in">
-    <h3>Session drill-down: one question, one click</h3>
-    <p>The session list shows every agent run with its prompt, model, status, and metadata. When an engineer wants to investigate a specific session — a failed run, an unexpectedly expensive call, an anomalous response — they click it. The drill-down opens the full detail of that session: the waterfall, the conversation content at each LLM call, the inputs and outputs of each tool execution, the token counts and duration at every step.</p>
-    <p>This is the same drill-down pattern used across the rest of the Parseable platform. Consistency mattered here — engineers who already knew how to navigate logs and traces didn't need to learn a new interaction model for agent data. The pattern held, and the feature felt native rather than bolted on.</p>
-
-    <h3>PII detection: a design problem with legal stakes</h3>
-    <p>AI agents routinely process user data — names, emails, phone numbers, financial details. When that data leaks into LLM calls or tool outputs, the risk is real and the regulatory exposure varies by data type. I designed the PII detection surface around two dimensions: risk level and regulatory impact.</p>
-    <p>Risk level reflects severity — a leaked credit card number is categorised differently from a leaked email address. Regulatory impact maps the detected PII to the frameworks it affects: GDPR, HIPAA, PCI-DSS. I worked directly with the founders and team to calibrate the categorisation, referencing published risk frameworks, with the understanding that legal review would be required before enterprise deployment. The design made the stakes visible without requiring the engineer to know the regulatory landscape themselves — the surface does the classification, they act on it.</p>
-  </div>
-</div>
-
-<div class="full-img r169 fade-in" style="background:#150f15;">
-  <!-- <img src="../assets/parseable-agent-pii.jpg" alt="PII detection with risk levels and regulatory impact"> -->
-</div>
-
-<div class="spacer"></div>
+    <div class="case-section fade-in">
+      <h3 class="text-h3">The overview dashboard: surface cost before anything else</h3>
+      <p class="text-body">The overview dashboard needed to answer one question before any other: which of your agents is costing you the most, and why. Engineers running AI agents in production are spending real money on every invocation — and failed invocations cost the same as successful ones. Latency compounds cost. Token inefficiency compounds cost.</p>
+      <p class="text-body">I designed the panels around that priority: invocations and failure rate first, then token usage and cost, then latency. The sequence is deliberate — it gives engineers a path from "something is wrong" to "here is what it's costing you" to "here is where the time is going." Each panel links to the session drill-down filtered to the relevant agent and time range, so the overview is never a dead end.</p>
+    </div>
   </div>
 
   <div class="spacer"></div>
   <div class="spacer"></div>
 
-  <div class="full-img r169 fade-in" style="background:#111620;">
-    <!-- <img src="../assets/parseable-filtering.jpg" alt="Filtering system"> -->
+  <div class="full-img r169 fade-in" style="background:#0f1520;">
+    <!-- <img src="../assets/parseable-agent-overview.jpg" alt="Agent observability overview dashboard"> -->
   </div>
-  <p class="img-caption">Filtering system</p>
-  <div class="full-img r169 fade-in" style="background:#0f1a15;">
-    <!-- <img src="../assets/parseable-logs.jpg" alt="Log view with inline filters"> -->
+  <p class="img-caption">Agent observability overview dashboard</p>
+
+  <div class="spacer"></div>
+
+  <div class="wrap">
+    <div class="case-section fade-in">
+      <h3 class="text-h3">Session drill-down: one question, one click</h3>
+      <p class="text-body">The session list shows every agent run with its prompt, model, status, and metadata. When an engineer wants to investigate a specific session — a failed run, an unexpectedly expensive call, an anomalous response — they click it. The drill-down opens the full detail of that session: the waterfall, the conversation content at each LLM call, the inputs and outputs of each tool execution, the token counts and duration at every step.</p>
+      <p class="text-body">This is the same drill-down pattern used across the rest of the Parseable platform. Consistency mattered here — engineers who already knew how to navigate logs and traces didn't need to learn a new interaction model for agent data. The pattern held, and the feature felt native rather than bolted on.</p>
+
+      <h3 class="text-h3">PII detection: a design problem with legal stakes</h3>
+      <p class="text-body">AI agents routinely process user data — names, emails, phone numbers, financial details. When that data leaks into LLM calls or tool outputs, the risk is real and the regulatory exposure varies by data type. I designed the PII detection surface around two dimensions: risk level and regulatory impact.</p>
+      <p class="text-body">Risk level reflects severity — a leaked credit card number is categorised differently from a leaked email address. Regulatory impact maps the detected PII to the frameworks it affects: GDPR, HIPAA, PCI-DSS. I worked directly with the founders and team to calibrate the categorisation, referencing published risk frameworks, with the understanding that legal review would be required before enterprise deployment. The design made the stakes visible without requiring the engineer to know the regulatory landscape themselves — the surface does the classification, they act on it.</p>
+    </div>
   </div>
-  <p class="img-caption">Log view with inline filters</p>
+
+  <div class="spacer"></div>
+  <div class="spacer"></div>
+
+  <div class="full-img r169 fade-in" style="background:#150f15;">
+    <!-- <img src="../assets/parseable-agent-pii.jpg" alt="PII detection with risk levels and regulatory impact"> -->
+  </div>
+  <p class="img-caption">PII detection with risk levels and regulatory impact</p>
 
   <div class="spacer"></div>
 
