@@ -974,6 +974,9 @@ footer .container {
 
 .work-page .full-img {
   margin-top: 4rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .work-page .full-img + .full-img {
